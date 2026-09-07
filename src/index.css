@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+
+  /* Official Brand Colors from Logo */
+  --color-brand-coral: #FF383D;
+  --color-brand-coral-hover: #E0262B;
+  --color-brand-coral-light: #FFF1F2;
+  
+  --color-brand-blue: #25ABE2;
+  --color-brand-blue-hover: #1694C7;
+  --color-brand-blue-light: #F0F9FF;
+  
+  --color-primary-navy: #0D1E32;
+  --color-primary-dark: #071322;
+
+  --color-bg-canvas: #F8FAFC;
+  --color-surface-white: #FFFFFF;
+  --color-text-main: #0D1E32;
+  --color-text-muted: #475569;
+  --color-text-subtle: #64748B;
+  --color-border-subtle: #E2E8F0;
+  
+  --color-success-main: #16A34A;
+  --color-error-main: #DC2626;
+
+  --radius-card: 20px;
+  --radius-btn: 12px;
+}
+
+@layer base {
+  * {
+    border-color: #E2E8F0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #F8FAFC;
+    color: #0D1E32;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: #0D1E32;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Paper Grid completely disabled/removed */
+.paper-grid {
+  background-image: none !important;
+}
+
+/* Neat, Premium Elevations */
+.shadow-premium-sm {
+  box-shadow: 0 2px 8px rgba(13, 30, 50, 0.04);
+}
+
+.shadow-premium-card {
+  box-shadow: 0 4px 20px -2px rgba(13, 30, 50, 0.05), 0 2px 6px -1px rgba(13, 30, 50, 0.03);
+}
+
+.shadow-premium-hover {
+  box-shadow: 0 16px 36px -4px rgba(13, 30, 50, 0.09), 0 4px 12px -2px rgba(13, 30, 50, 0.04);
+}
+
+.shadow-coral-btn {
+  box-shadow: 0 4px 14px rgba(255, 56, 61, 0.25);
+}
+
+.shadow-coral-btn:hover {
+  box-shadow: 0 6px 20px rgba(255, 56, 61, 0.35);
+}
+
+.shadow-blue-btn {
+  box-shadow: 0 4px 14px rgba(37, 171, 226, 0.25);
+}
+
+.shadow-blue-btn:hover {
+  box-shadow: 0 6px 20px rgba(37, 171, 226, 0.35);
+}
