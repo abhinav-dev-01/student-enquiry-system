@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FloatingContactButtons from './components/FloatingContactButtons';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import EnquiryPage from './pages/EnquiryPage';
@@ -40,6 +41,9 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
+
+        {/* Floating Quick Contact Widget (WhatsApp & Call) */}
+        <FloatingContactButtons />
 
         {/* Global Academic Footer */}
         <Footer />

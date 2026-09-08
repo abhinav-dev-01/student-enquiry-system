@@ -101,11 +101,11 @@ export default function AboutPage() {
               </Link>
 
               <a
-                href="tel:+919876543210"
+                href="tel:+917012743030"
                 className="inline-flex items-center gap-2 text-slate-700 hover:text-[#0D1E32] px-5 py-3.5 rounded-xl font-heading font-semibold text-sm border border-slate-200 hover:border-slate-300 bg-white transition-colors"
               >
                 <Phone className="w-4 h-4 text-[#25ABE2]" />
-                <span>Admissions: +91 98765 43210</span>
+                <span>Admissions: +91 70127 43030</span>
               </a>
             </div>
 

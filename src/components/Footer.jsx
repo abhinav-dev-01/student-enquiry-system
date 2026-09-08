@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUp, MessageCircle } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Footer() {
@@ -100,8 +100,19 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-slate-400">
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#FF383D] shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
-                  +91 98765 43210
+                <a href="tel:+917012743030" className="hover:text-white transition-colors">
+                  +91 70127 43030 (Call)
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
+                <a 
+                  href="https://wa.me/919249046898?text=Hello%20Origami%20Learning%2C%20I%20would%20like%20to%20enquire%20about%20admissions."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  +91 92490 46898 (WhatsApp)
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

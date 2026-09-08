@@ -179,12 +179,12 @@ export default function Navbar() {
             {/* Desktop Actions (Helpline + Enquire CTA) */}
             <div className="hidden md:flex items-center gap-3">
               <a
-                href="tel:+919876543210"
+                href="tel:+917012743030"
                 className="hidden lg:flex items-center gap-2 text-xs font-heading font-semibold text-[#0D1E32] bg-slate-50 hover:bg-[#F0F9FF] border border-slate-200 hover:border-[#25ABE2]/40 px-3.5 py-2 rounded-full transition-all group"
                 title="Admissions Helpline"
               >
                 <Phone className="w-3.5 h-3.5 text-[#25ABE2] group-hover:scale-110 transition-transform" />
-                <span>+91 98765 43210</span>
+                <span>+91 70127 43030</span>
               </a>
 
               <Link
@@ -199,7 +199,7 @@ export default function Navbar() {
             {/* Mobile Top Actions (Call Button + Hamburger Menu) */}
             <div className="flex md:hidden items-center gap-2">
               <a
-                href="tel:+919876543210"
+                href="tel:+917012743030"
                 className="p-2 rounded-full bg-slate-100 text-[#0D1E32] hover:bg-[#F0F9FF] border border-slate-200 text-xs font-bold flex items-center justify-center"
                 aria-label="Call Admissions Helpline"
               >
@@ -262,11 +262,11 @@ export default function Navbar() {
 
             <div className="pt-4 border-t border-slate-100 space-y-2.5">
               <a
-                href="tel:+919876543210"
+                href="tel:+917012743030"
                 className="flex items-center justify-center gap-2 w-full text-xs font-heading font-bold text-[#0D1E32] bg-[#F0F9FF] border border-[#25ABE2]/25 py-2.5 rounded-xl hover:bg-[#25ABE2]/10 transition-colors"
               >
                 <Phone className="w-4 h-4 text-[#25ABE2]" />
-                <span>Admissions Helpline: +91 98765 43210</span>
+                <span>Admissions Helpline: +91 70127 43030</span>
               </a>
 
               <Link

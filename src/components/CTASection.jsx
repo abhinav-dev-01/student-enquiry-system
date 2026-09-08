@@ -57,11 +57,11 @@ export default function CTASection() {
 
               {/* Admissions Helpline: Logo Blue Glassmorphism Button with White Text */}
               <a
-                href="tel:+919876543210"
+                href="tel:+917012743030"
                 className="inline-flex items-center justify-center gap-2 bg-[#25ABE2]/25 hover:bg-[#25ABE2]/35 backdrop-blur-md text-white border border-[#25ABE2]/60 hover:border-white/50 px-6 py-3.5 rounded-[12px] font-heading font-semibold text-xs tracking-wide shadow-[0_8px_24px_rgba(0,0,0,0.12),inset_0_1px_2px_rgba(255,255,255,0.4)] hover:shadow-[0_12px_28px_rgba(37,171,226,0.3),inset_0_1px_2px_rgba(255,255,255,0.5)] transition-all text-center group"
               >
                 <Phone className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                <span>Helpline: +91 98765 43210</span>
+                <span>Call: +91 70127 43030</span>
               </a>
             </div>
 
