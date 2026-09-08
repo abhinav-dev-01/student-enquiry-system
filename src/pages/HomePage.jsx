@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
+import ReelsSection from '../components/ReelsSection';
 import CTASection from '../components/CTASection';
 import { 
   ArrowRight, 
@@ -135,8 +136,10 @@ export default function HomePage() {
         </section>
 
         {/* ------------------------------------------------------------------------- */}
-        {/* SECTION 2: THE TWO ACADEMIC PATHWAYS (Minimal, Premium & Logo Color Hover) */}
+        {/* REELS SHOWCASE: STUDENT VOICES, CIVIL SERVICE GUIDANCE & AUTOPLAY REELS */}
         {/* ------------------------------------------------------------------------- */}
+        <ReelsSection />
+
         {/* ------------------------------------------------------------------------- */}
         {/* SECTION 2: ACADEMIC PATHWAYS (Modern & Minimal Program Cards) */}
         {/* ------------------------------------------------------------------------- */}
