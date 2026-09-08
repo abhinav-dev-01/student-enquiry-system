@@ -34,7 +34,7 @@ export default function HeroSection() {
   const videoScale = 1 + Math.min(scrollY * 0.00025, 0.08);
 
   return (
-    <section className="relative min-h-[100dvh] h-[100dvh] sm:min-h-[75vh] sm:h-auto md:min-h-[85vh] flex flex-col justify-start pt-24 pb-12 sm:pt-28 sm:pb-12 md:pt-36 md:pb-16 bg-white overflow-hidden">
+    <section className="relative min-h-[100dvh] h-[100dvh] sm:min-h-[75vh] sm:h-auto md:min-h-[85vh] flex flex-col justify-between pt-24 pb-8 sm:pt-28 sm:pb-10 md:pt-36 md:pb-12 bg-white overflow-hidden">
       {/* Background Video with Mobile-Responsive Framing & Smooth Scroll-Linked Zoom-in */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
@@ -58,11 +58,12 @@ export default function HeroSection() {
         <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 md:h-32 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-between items-start flex-grow">
+        
+        {/* Top Area: Badge & Main Headline */}
         <div className="max-w-2xl lg:max-w-3xl flex flex-col items-start text-left">
-          
           {/* Admissions Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs font-heading font-bold text-[#0D1E32] mb-5 md:mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/85 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs font-heading font-bold text-[#0D1E32] mb-3 sm:mb-4">
             <span className="w-2 h-2 rounded-full bg-[#FF383D]"></span>
             <span className="text-[#FF383D] uppercase tracking-wider font-extrabold">Admissions Open</span>
             <span className="text-slate-300">|</span>
@@ -70,31 +71,30 @@ export default function HeroSection() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#0D1E32] tracking-tight leading-[1.15] mb-7 md:mb-10 drop-shadow-xs">
+          <h1 className="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#0D1E32] tracking-tight leading-[1.15] drop-shadow-xs">
             Structured Guidance for{' '}
             <span className="text-[#FF383D]">Civil Services</span> &{' '}
             <span className="text-[#25ABE2]">Academic Mastery</span>.
           </h1>
+        </div>
 
-          {/* Direct CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-3.5 sm:gap-4 w-full sm:w-auto">
-            <Link
-              to="/enquiry"
-              className="inline-flex items-center justify-center gap-3 bg-[#FF383D] hover:bg-[#E0262B] text-white px-7 py-3.5 rounded-full font-heading font-bold text-sm shadow-[0_4px_16px_rgba(255,56,61,0.3)] hover:shadow-[0_6px_22px_rgba(255,56,61,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all group"
-            >
-              <span>Submit Student Enquiry</span>
-              <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
-            </Link>
+        {/* Bottom Area: Compact Action Buttons on the Same Line */}
+        <div className="mt-auto pt-6 pb-2 w-full flex flex-row items-center justify-start gap-2.5 sm:gap-3">
+          <Link
+            to="/enquiry"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-heading font-bold text-xs sm:text-sm shadow-[0_4px_14px_rgba(255,56,61,0.25)] hover:shadow-[0_6px_18px_rgba(255,56,61,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all group shrink-0"
+          >
+            <span>Enquire Now</span>
+            <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 transition-transform" />
+          </Link>
 
-            <button
-              onClick={scrollToPrograms}
-              className="inline-flex items-center justify-center gap-2.5 bg-white/90 hover:bg-white text-[#0D1E32] px-6 py-3.5 rounded-full font-heading font-semibold text-sm border border-slate-200/90 shadow-xs backdrop-blur-sm transition-all cursor-pointer"
-            >
-              <BookOpen className="w-4 h-4 text-[#25ABE2]" />
-              <span>Explore Programs</span>
-            </button>
-          </div>
-
+          <button
+            onClick={scrollToPrograms}
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-white/90 hover:bg-white text-[#0D1E32] px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full font-heading font-semibold text-xs sm:text-sm border border-slate-200/90 shadow-xs backdrop-blur-sm transition-all cursor-pointer shrink-0"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-[#25ABE2]" />
+            <span>Explore Programs</span>
+          </button>
         </div>
 
       </div>
