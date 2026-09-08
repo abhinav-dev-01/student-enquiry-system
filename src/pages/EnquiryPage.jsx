@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ShieldCheck, CheckCircle2, Phone, Clock, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ShieldCheck, CheckCircle2, Phone, Clock } from 'lucide-react';
 import EnquiryForm from '../components/EnquiryForm';
 import Logo from '../components/Logo';
 
@@ -44,28 +44,17 @@ export default function EnquiryPage() {
               </p>
             </div>
 
-            <div className="sm:border-l sm:border-slate-200 sm:pl-6 shrink-0 flex flex-col justify-center gap-2">
-              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+            <div className="sm:border-l sm:border-slate-200 sm:pl-6 shrink-0 flex flex-col justify-center">
+              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-1">
                 DIRECT HELPDESK
               </span>
-              <div className="flex flex-wrap sm:flex-col gap-2">
-                <a
-                  href="tel:+917012743030"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#0D1E32] bg-[#F0F9FF] border border-[#25ABE2]/25 px-3 py-2 rounded-xl hover:bg-[#25ABE2]/10 transition-colors font-sans"
-                >
-                  <Phone className="w-3.5 h-3.5 text-[#25ABE2]" />
-                  <span>+91 70127 43030</span>
-                </a>
-                <a
-                  href="https://wa.me/919249046898?text=Hello%20Origami%20Learning%2C%20I%20would%20like%20to%20enquire%20about%20admissions."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-3 py-2 rounded-xl hover:bg-emerald-100/70 transition-colors font-sans"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>+91 92490 46898</span>
-                </a>
-              </div>
+              <a
+                href="tel:+917012743030"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#0D1E32] bg-[#F0F9FF] border border-[#25ABE2]/25 px-3.5 py-2.5 rounded-xl hover:bg-[#25ABE2]/10 transition-colors font-sans"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#25ABE2]" />
+                <span>+91 70127 43030</span>
+              </a>
             </div>
           </div>
         </div>
