@@ -61,14 +61,6 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-2xl lg:max-w-3xl flex flex-col items-start text-left">
 
-          {/* Admissions Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs font-heading font-bold text-[#0D1E32] mb-3 sm:mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#FF383D]"></span>
-            <span className="text-[#FF383D] uppercase tracking-wider font-extrabold">Admissions Open</span>
-            <span className="text-slate-300">|</span>
-            <span className="text-[#475569] font-medium">Session 2026–2027</span>
-          </div>
-
           {/* Main Headline */}
           <h1 className="font-heading font-extrabold text-[26px] leading-[1.18] sm:text-4xl lg:text-5xl text-[#0D1E32] tracking-tight mb-3.5 sm:mb-4 drop-shadow-xs max-w-xl sm:max-w-none">
             Structured Guidance for{' '}
