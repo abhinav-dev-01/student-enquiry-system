@@ -137,82 +137,100 @@ export default function HomePage() {
         {/* ------------------------------------------------------------------------- */}
         {/* SECTION 2: THE TWO ACADEMIC PATHWAYS (Minimal, Premium & Logo Color Hover) */}
         {/* ------------------------------------------------------------------------- */}
-        <section id="programs" className="py-16 md:py-24 bg-[#FAFBFD] border-b border-slate-200/80 scroll-mt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ------------------------------------------------------------------------- */}
+        {/* SECTION 2: ACADEMIC PATHWAYS (Modern & Minimal Program Cards) */}
+        {/* ------------------------------------------------------------------------- */}
+        <section id="programs" className="py-16 md:py-24 bg-[#FAFBFD] relative overflow-hidden border-b border-slate-200/80 scroll-mt-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             {/* Section Header */}
             <div className="max-w-2xl text-left mb-12">
-              <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#25ABE2] uppercase block mb-2">
-                02 / ACADEMIC PATHWAYS
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200/80 shadow-xs mb-3">
+                <span className="w-2 h-2 rounded-full bg-[#25ABE2]" />
+                <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#25ABE2] uppercase">
+                  02 / ACADEMIC PATHWAYS
+                </span>
+              </div>
               <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-[#0D1E32] tracking-tight">
                 Two Dedicated Programs. One High Standard.
               </h2>
-              <p className="text-slate-600 text-base mt-2">
+              <p className="text-slate-600 text-base mt-2 font-normal leading-relaxed">
                 Focused, small-cohort academic coaching built on first principles and daily faculty mentorship.
               </p>
             </div>
 
-            {/* Asymmetrical 2-Column Program Cards with Logo-Color Hover Effects */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* 2-Column Program Cards with Modern Minimalist Theme & Light Hover Effects */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-8 items-stretch">
               
-              {/* Card 1: Civil Service Academy (Red Logo Accent Hover) */}
-              <div className="group bg-white rounded-2xl border border-slate-200/90 p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#FF383D] hover:shadow-[0_16px_36px_rgba(255,56,61,0.12)] text-left">
-                <div>
+              {/* Card 1: Civil Service Academy */}
+              <div className="group relative bg-gradient-to-b from-white via-white to-red-50/20 rounded-3xl border border-slate-200/80 p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:border-red-200/90 shadow-[0_4px_20px_rgba(13,30,50,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(255,56,61,0.12)] text-left overflow-hidden">
+                {/* Minimal Top Hairline */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#FF383D] via-red-400 to-[#FF383D] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Light Corner Ambient Tint */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-red-100/40 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="relative z-10">
+                  {/* Top Badge Row */}
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#FF383D] group-hover:tracking-widest transition-all">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF383D] bg-red-50/80 border border-red-100/60">
                       UPSC & STATE PSC PREP
                     </span>
-                    <span className="text-[11px] font-mono font-bold text-slate-400">
+                    <span className="text-[11px] font-mono font-medium text-slate-400">
                       ANNUAL COHORT
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#FF383D] transition-colors">
+                  <h3 className="text-2xl sm:text-[26px] font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#FF383D] transition-colors">
                     Civil Service Academy
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-sans">
                     Multi-stage foundation designed to build conceptual depth, analytical answer writing, and administrative poise for future civil servants.
                   </p>
 
-                  {/* Clean Minimal Curriculum Points */}
-                  <div className="space-y-3 mb-8">
+                  {/* Minimal Curriculum Points */}
+                  <div className="space-y-3.5 mb-8">
                     <div className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF383D] mt-2 shrink-0" />
+                      <div className="w-5 h-5 rounded-md bg-red-50 text-[#FF383D] flex items-center justify-center shrink-0 mt-0.5 border border-red-100/50">
+                        <Check className="w-3 h-3 stroke-[2.5]" />
+                      </div>
                       <div>
                         <span className="text-sm font-heading font-bold text-[#0D1E32]">First-Principles General Studies</span>
-                        <p className="text-xs text-slate-500">Polity, Modern History, Governance, Economy & Geography.</p>
+                        <p className="text-xs text-slate-500 mt-0.5">Polity, Modern History, Governance, Economy & Geography.</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF383D] mt-2 shrink-0" />
+                      <div className="w-5 h-5 rounded-md bg-red-50 text-[#FF383D] flex items-center justify-center shrink-0 mt-0.5 border border-red-100/50">
+                        <Check className="w-3 h-3 stroke-[2.5]" />
+                      </div>
                       <div>
                         <span className="text-sm font-heading font-bold text-[#0D1E32]">Daily Answer Writing Drills</span>
-                        <p className="text-xs text-slate-500">Line-by-line faculty red-ink corrections returned within 24 hours.</p>
+                        <p className="text-xs text-slate-500 mt-0.5">Line-by-line faculty red-ink corrections returned within 24 hours.</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF383D] mt-2 shrink-0" />
+                      <div className="w-5 h-5 rounded-md bg-red-50 text-[#FF383D] flex items-center justify-center shrink-0 mt-0.5 border border-red-100/50">
+                        <Check className="w-3 h-3 stroke-[2.5]" />
+                      </div>
                       <div>
                         <span className="text-sm font-heading font-bold text-[#0D1E32]">Senior Bureaucrat Masterclasses</span>
-                        <p className="text-xs text-slate-500">Regular sessions on public policy, governance ethics & interview poise.</p>
+                        <p className="text-xs text-slate-500 mt-0.5">Regular sessions on public policy, governance ethics & interview poise.</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Card Footer */}
-                <div className="pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-xs text-slate-500">
+                <div className="relative z-10 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-xs text-slate-500 font-medium">
                     <span className="font-bold text-[#0D1E32]">Batches:</span> Morning & Evening Options
                   </div>
 
                   <Link
                     to="/enquiry?program=Civil%20Service"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0D1E32] group-hover:bg-[#FF383D] text-white px-6 py-3 rounded-xl font-heading font-bold text-xs transition-colors shadow-xs"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-5 py-2.5 rounded-xl font-heading font-bold text-xs transition-all shadow-xs hover:shadow-[0_4px_12px_rgba(255,56,61,0.25)]"
                   >
                     <span>Enquire for Civil Service</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -220,63 +238,75 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Card 2: School Foundation Tuition (Blue Logo Accent Hover) */}
-              <div className="group bg-white rounded-2xl border border-slate-200/90 p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#25ABE2] hover:shadow-[0_16px_36px_rgba(37,171,226,0.14)] text-left">
-                <div>
+              {/* Card 2: School Foundation Tuition */}
+              <div className="group relative bg-gradient-to-b from-white via-white to-sky-50/20 rounded-3xl border border-slate-200/80 p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:border-sky-200/90 shadow-[0_4px_20px_rgba(13,30,50,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(37,171,226,0.12)] text-left overflow-hidden">
+                {/* Minimal Top Hairline */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#25ABE2] via-sky-400 to-[#25ABE2] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Light Corner Ambient Tint */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-100/40 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="relative z-10">
+                  {/* Top Badge Row */}
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#25ABE2] group-hover:tracking-widest transition-all">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider text-[#25ABE2] bg-sky-50/80 border border-sky-100/60">
                       CLASS 8, 9 & 10 TUITION
                     </span>
-                    <span className="text-[11px] font-mono font-bold text-slate-400">
+                    <span className="text-[11px] font-mono font-medium text-slate-400">
                       MAX 15 STUDENTS
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#25ABE2] transition-colors">
+                  <h3 className="text-2xl sm:text-[26px] font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#25ABE2] transition-colors">
                     School Foundation Tuition
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-sans">
                     First-principles academic coaching designed to eliminate exam anxiety, master core science & mathematics, and build unshakeable conceptual clarity.
                   </p>
 
-                  {/* Clean Minimal Premium Feature Points */}
-                  <div className="space-y-3 mb-8">
+                  {/* Minimal Curriculum Points */}
+                  <div className="space-y-3.5 mb-8">
                     <div className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#25ABE2] mt-2 shrink-0" />
+                      <div className="w-5 h-5 rounded-md bg-sky-50 text-[#25ABE2] flex items-center justify-center shrink-0 mt-0.5 border border-sky-100/50">
+                        <Check className="w-3 h-3 stroke-[2.5]" />
+                      </div>
                       <div>
                         <span className="text-sm font-heading font-bold text-[#0D1E32]">Conceptual Science & Mathematics</span>
-                        <p className="text-xs text-slate-500">Physics, Chemistry, Biology & Maths taught from first principles—zero rote memorization.</p>
+                        <p className="text-xs text-slate-500 mt-0.5">Physics, Chemistry, Biology & Maths taught from first principles—zero rote memorization.</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#25ABE2] mt-2 shrink-0" />
+                      <div className="w-5 h-5 rounded-md bg-sky-50 text-[#25ABE2] flex items-center justify-center shrink-0 mt-0.5 border border-sky-100/50">
+                        <Check className="w-3 h-3 stroke-[2.5]" />
+                      </div>
                       <div>
                         <span className="text-sm font-heading font-bold text-[#0D1E32]">Intimate 15-Student Cohort</span>
-                        <p className="text-xs text-slate-500">Strictly capped small batches ensure teachers track every student's individual pace.</p>
+                        <p className="text-xs text-slate-500 mt-0.5">Strictly capped small batches ensure teachers track every student's individual pace.</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#25ABE2] mt-2 shrink-0" />
+                      <div className="w-5 h-5 rounded-md bg-sky-50 text-[#25ABE2] flex items-center justify-center shrink-0 mt-0.5 border border-sky-100/50">
+                        <Check className="w-3 h-3 stroke-[2.5]" />
+                      </div>
                       <div>
                         <span className="text-sm font-heading font-bold text-[#0D1E32]">Daily Worksheets & Doubt Desks</span>
-                        <p className="text-xs text-slate-500">Systematic practice worksheets with line-by-line feedback and daily evening doubt clinics.</p>
+                        <p className="text-xs text-slate-500 mt-0.5">Systematic practice worksheets with line-by-line feedback and daily evening doubt clinics.</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Card Footer */}
-                <div className="pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-xs text-slate-500">
+                <div className="relative z-10 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-xs text-slate-500 font-medium">
                     <span className="font-bold text-[#0D1E32]">Schedule:</span> Evening & Weekend Cohorts
                   </div>
 
                   <Link
                     to="/enquiry?program=Tuition"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25ABE2] hover:bg-[#1694C7] text-white px-6 py-3 rounded-xl font-heading font-bold text-xs transition-colors shadow-xs"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25ABE2] hover:bg-[#1694C7] text-white px-5 py-2.5 rounded-xl font-heading font-bold text-xs transition-all shadow-xs hover:shadow-[0_4px_12px_rgba(37,171,226,0.25)]"
                   >
                     <span>Enquire for Tuition</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
