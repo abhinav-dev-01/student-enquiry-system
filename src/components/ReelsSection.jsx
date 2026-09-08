@@ -367,10 +367,10 @@ export default function ReelsSection() {
                   />
                 )}
 
-                {/* Top Accent Gradient Line on Hover / Active */}
+                {/* Top Accent Line (Active Only) */}
                 <div
                   className={`absolute top-0 left-0 right-0 h-1 z-20 transition-opacity duration-300 ${
-                    isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                    isActive ? 'opacity-100' : 'opacity-0'
                   }`}
                   style={{
                     backgroundColor: reel.tagColor
@@ -409,10 +409,10 @@ export default function ReelsSection() {
                 {/* Ambient Cinematic Vignette Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/85 pointer-events-none transition-opacity duration-300 group-hover:opacity-90" />
 
-                {/* TOP BAR: Tag & Sound Indicator */}
+                {/* TOP BAR: Tag & Sound Indicator (Hover effects removed) */}
                 <div className="relative z-10 p-4 flex items-center justify-between w-full">
                   <span
-                    className="text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-md shadow-xs transition-transform duration-300 group-hover:scale-105"
+                    className="text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-md shadow-xs"
                     style={{
                       backgroundColor: `${reel.tagColor}35`,
                       color: '#FFFFFF',
@@ -427,7 +427,7 @@ export default function ReelsSection() {
                       e.stopPropagation();
                       toggleSound();
                     }}
-                    className="p-1.5 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white transition-all active:scale-90 cursor-pointer group-hover:border-white/40"
+                    className="p-1.5 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white transition-all active:scale-90 cursor-pointer"
                     aria-label={isMuted ? "Unmute" : "Mute"}
                   >
                     {isMuted ? (
