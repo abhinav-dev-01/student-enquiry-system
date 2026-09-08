@@ -31,7 +31,7 @@ function App() {
         <Navbar />
 
         {/* Dynamic Route View */}
-        <main className="flex-grow">
+        <main className="flex-grow pb-16 md:pb-0">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
