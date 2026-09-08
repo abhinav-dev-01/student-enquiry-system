@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { 
-  Menu, 
-  X, 
-  ArrowRight, 
-  Phone, 
-  Home, 
-  BookOpen, 
-  GraduationCap, 
-  ShieldCheck, 
+import {
+  Menu,
+  X,
+  ArrowRight,
+  Phone,
+  Home,
+  BookOpen,
+  GraduationCap,
+  ShieldCheck,
   ChevronRight,
   Send
 } from 'lucide-react';
@@ -118,33 +118,32 @@ export default function Navbar() {
       {/* ----------------------------------------------------------------------- */}
       {/* 1. TOP GLOBAL NAVIGATION (Desktop + Mobile Header) */}
       {/* ----------------------------------------------------------------------- */}
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(13,30,50,0.06)] border-b border-slate-200/80 py-2.5 sm:py-3' 
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(13,30,50,0.06)] border-b border-slate-200/80 py-2.5 sm:py-3'
             : 'bg-white/90 backdrop-blur-md border-b border-slate-200/60 py-3 sm:py-4'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            
-            {/* Brand Logo */}
-            <Link 
-              to="/" 
+
+            {/* Brand Logo - No Background */}
+            <Link
+              to="/"
               onClick={(e) => {
                 if (location.pathname === '/') {
                   e.preventDefault();
                   handleNavClick('home');
                 }
               }}
-              className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#FF383D] focus:ring-offset-2 rounded-xl transition-transform py-1"
+              className="flex items-center shrink-0 py-0.5 select-none focus:outline-none bg-transparent"
               aria-label="Origami Learning Home"
             >
-              <Logo className="h-8 sm:h-9 md:h-10 transition-transform group-hover:scale-105 duration-200" />
+              <Logo className="h-8 sm:h-9 md:h-11 lg:h-12 max-w-[160px] sm:max-w-[200px] md:max-w-none transition-transform group-hover:scale-105 duration-200" />
             </Link>
 
             {/* Desktop Navigation Pill Bar */}
-            <nav 
+            <nav
               className="hidden md:flex items-center p-1.5 rounded-full bg-slate-100/80 border border-slate-200/80 backdrop-blur-sm shadow-xs space-x-1"
               aria-label="Main Navigation"
             >
@@ -154,20 +153,18 @@ export default function Navbar() {
                   <button
                     key={item.key}
                     onClick={() => handleNavClick(item.key)}
-                    className={`relative px-4 py-1.5 rounded-full text-sm font-heading font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
-                      active
+                    className={`relative px-4 py-1.5 rounded-full text-sm font-heading font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${active
                         ? 'bg-white text-[#0D1E32] shadow-[0_2px_8px_rgba(13,30,50,0.08)]'
                         : 'text-slate-600 hover:text-[#0D1E32] hover:bg-white/60'
-                    }`}
+                      }`}
                     aria-current={active ? 'page' : undefined}
                   >
                     {active && (
-                      <span 
-                        className={`w-1.5 h-1.5 rounded-full transition-all ${
-                          item.key === 'about' || item.key === 'why-us' 
-                            ? 'bg-[#25ABE2]' 
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full transition-all ${item.key === 'about' || item.key === 'why-us'
+                            ? 'bg-[#25ABE2]'
                             : 'bg-[#FF383D]'
-                        }`} 
+                          }`}
                       />
                     )}
                     <span>{item.label}</span>
@@ -176,17 +173,8 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Desktop Actions (Helpline + Enquire CTA) */}
+            {/* Desktop Actions (Enquire CTA) */}
             <div className="hidden md:flex items-center gap-3">
-              <a
-                href="tel:+917012743030"
-                className="hidden lg:flex items-center gap-2 text-xs font-heading font-semibold text-[#0D1E32] bg-slate-50 hover:bg-[#F0F9FF] border border-slate-200 hover:border-[#25ABE2]/40 px-3.5 py-2 rounded-full transition-all group"
-                title="Admissions Helpline"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#25ABE2] group-hover:scale-110 transition-transform" />
-                <span>+91 70127 43030</span>
-              </a>
-
               <Link
                 to="/enquiry"
                 className="inline-flex items-center gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-5 py-2 rounded-full font-heading font-bold text-sm shadow-[0_4px_14px_rgba(255,56,61,0.25)] hover:shadow-[0_6px_20px_rgba(255,56,61,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all group"
@@ -196,16 +184,8 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Top Actions (Call Button + Hamburger Menu) */}
+            {/* Mobile Actions (Quick Enquire, Hamburger) */}
             <div className="flex md:hidden items-center gap-2">
-              <a
-                href="tel:+917012743030"
-                className="p-2 rounded-full bg-slate-100 text-[#0D1E32] hover:bg-[#F0F9FF] border border-slate-200 text-xs font-bold flex items-center justify-center"
-                aria-label="Call Admissions Helpline"
-              >
-                <Phone className="w-4 h-4 text-[#25ABE2]" />
-              </a>
-
               <Link
                 to="/enquiry"
                 className="bg-[#FF383D] hover:bg-[#E0262B] text-white px-3.5 py-1.5 rounded-full font-heading font-bold text-xs shadow-xs"
@@ -237,16 +217,14 @@ export default function Navbar() {
                   <button
                     key={item.key}
                     onClick={() => handleNavClick(item.key)}
-                    className={`w-full flex items-center justify-between p-3 rounded-xl transition-all text-left cursor-pointer ${
-                      active
+                    className={`w-full flex items-center justify-between p-3 rounded-xl transition-all text-left cursor-pointer ${active
                         ? 'bg-slate-100 text-[#0D1E32] font-bold border border-slate-200/80 shadow-xs'
                         : 'text-slate-700 hover:bg-slate-50 hover:text-[#0D1E32]'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                        active ? 'bg-[#FF383D]/10 text-[#FF383D]' : 'bg-slate-100 text-slate-500'
-                      }`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${active ? 'bg-[#FF383D]/10 text-[#FF383D]' : 'bg-slate-100 text-slate-500'
+                        }`}>
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
@@ -285,15 +263,14 @@ export default function Navbar() {
       {/* ----------------------------------------------------------------------- */}
       {/* 2. MOBILE BOTTOM FLOATING MENU BAR (Sticky Bottom Dock for Mobile) */}
       {/* ----------------------------------------------------------------------- */}
-      <nav 
+      <nav
         className="md:hidden fixed bottom-3 inset-x-3 z-40 bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-[0_8px_30px_rgba(13,30,50,0.12)] rounded-2xl p-1.5 flex items-center justify-around safe-area-bottom"
         aria-label="Mobile Bottom Navigation"
       >
         <button
           onClick={() => handleNavClick('home')}
-          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${
-            isItemActive('home') ? 'text-[#FF383D] font-bold bg-red-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
-          }`}
+          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${isItemActive('home') ? 'text-[#FF383D] font-bold bg-red-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
+            }`}
         >
           <Home className="w-4 h-4 mb-0.5" />
           <span className="text-[10px] font-heading leading-none">Home</span>
@@ -301,9 +278,8 @@ export default function Navbar() {
 
         <button
           onClick={() => handleNavClick('about')}
-          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${
-            isItemActive('about') ? 'text-[#25ABE2] font-bold bg-blue-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
-          }`}
+          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${isItemActive('about') ? 'text-[#25ABE2] font-bold bg-blue-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
+            }`}
         >
           <BookOpen className="w-4 h-4 mb-0.5" />
           <span className="text-[10px] font-heading leading-none">About</span>
@@ -311,9 +287,8 @@ export default function Navbar() {
 
         <button
           onClick={() => handleNavClick('programs')}
-          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${
-            isItemActive('programs') ? 'text-[#25ABE2] font-bold bg-blue-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
-          }`}
+          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${isItemActive('programs') ? 'text-[#25ABE2] font-bold bg-blue-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
+            }`}
         >
           <GraduationCap className="w-4 h-4 mb-0.5" />
           <span className="text-[10px] font-heading leading-none">Programs</span>
@@ -321,9 +296,8 @@ export default function Navbar() {
 
         <button
           onClick={() => handleNavClick('why-us')}
-          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${
-            isItemActive('why-us') ? 'text-[#FF383D] font-bold bg-red-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
-          }`}
+          className={`flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${isItemActive('why-us') ? 'text-[#FF383D] font-bold bg-red-50/60' : 'text-slate-500 hover:text-[#0D1E32]'
+            }`}
         >
           <ShieldCheck className="w-4 h-4 mb-0.5" />
           <span className="text-[10px] font-heading leading-none">Why Us</span>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, ArrowUp, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 import Logo from './Logo';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -100,7 +101,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
+                <WhatsAppIcon className="w-4 h-4 text-[#25D366] shrink-0 fill-current" />
                 <a 
                   href="https://wa.me/919249046898?text=Hello%20Origami%20Learning%2C%20I%20would%20like%20to%20enquire%20about%20admissions."
                   target="_blank"
@@ -112,8 +113,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#25ABE2] shrink-0" />
-                <a href="mailto:admissions@origamilearning.edu" className="hover:text-white transition-colors truncate">
-                  admissions@origamilearning.edu
+                <a href="mailto:origamilearninginitiatives@gmail.com" className="hover:text-white transition-colors truncate">
+                  origamilearninginitiatives@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2.5">

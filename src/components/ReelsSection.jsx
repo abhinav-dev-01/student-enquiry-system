@@ -1,13 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX, Sparkles, ChevronLeft, ChevronRight, ArrowRight, ArrowLeftRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight, ArrowLeftRight } from 'lucide-react';
 
 const REELS_DATA = [
   {
     id: 1,
     title: 'IAS പരീക്ഷക്ക് ഇനി നേരത്തെ ഒരുങ്ങാം',
     subtitle: 'ഇന്ത്യയിലെ ഏറ്റവും പ്രായം കുറഞ്ഞ IPS ഓഫീസർ ഹസൻ സഫീന്റെ പ്രചോദനാത്മക സന്ദേശം',
-    tag: 'Early Preparation',
     tagColor: '#FF383D',
     src: '/reels/reel-1.mp4',
     speaker: 'Safin Hasan IPS Inspiring Talk',
@@ -17,7 +15,6 @@ const REELS_DATA = [
     id: 2,
     title: 'ഇത് കുറച്ചുകൂടി നേരത്തെ തുടങ്ങാമായിരുന്നു...',
     subtitle: 'സിവിൽ സർവീസിന് പ്രിപ്പയർ ചെയ്യുന്ന ഓരോ ഉദ്യോഗാർത്ഥിയും അറിയേണ്ട യാഥാർത്ഥ്യം',
-    tag: 'Foundation Strategy',
     tagColor: '#25ABE2',
     src: '/reels/reel-2.mp4',
     speaker: 'Origami Academic Mentorship',
@@ -27,7 +24,6 @@ const REELS_DATA = [
     id: 3,
     title: 'കാസറഗോഡ് ജില്ലയിൽ നിന്നും സിവിൽ സർവീസ് രംഗത്തേക്ക്',
     subtitle: 'കൂടുതൽ പ്രതിഭകളെ സൃഷ്ടിക്കുക എന്ന ലക്ഷ്യത്തോടെ ഒറിഗാമി ലേണിംഗ് പ്ലാറ്റ്‌ഫോം',
-    tag: 'Origami Mission',
     tagColor: '#16A34A',
     src: '/reels/reel-3.mp4',
     speaker: 'District Talent Empowerment',
@@ -229,7 +225,7 @@ export default function ReelsSection() {
     <section
       id="reels"
       ref={sectionRef}
-      className="py-16 md:py-24 bg-white text-[#0D1E32] relative overflow-hidden border-b border-slate-200/80 scroll-mt-20"
+      className="py-14 md:py-18 bg-white text-[#0D1E32] relative overflow-hidden border-b border-slate-200/80 scroll-mt-20"
     >
       {/* Subtle Ambient Background Glows */}
       <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-red-100/35 rounded-full blur-[100px] pointer-events-none -translate-y-1/2" />
@@ -241,10 +237,9 @@ export default function ReelsSection() {
         {/* Header with Title & Interactive Unmute / Sound Pill */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8 sm:mb-12 text-left">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100/80 shadow-xs mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#FF383D]" />
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-50 border border-red-100/80 shadow-xs mb-3">
               <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF383D] uppercase">
-                STUDENT VOICES & PERSPECTIVES
+                LEADERSHIP TALKS & STRATEGIC INSIGHTS
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-[#0D1E32] tracking-tight leading-[1.18]">
@@ -409,25 +404,14 @@ export default function ReelsSection() {
                 {/* Ambient Cinematic Vignette Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/85 pointer-events-none transition-opacity duration-300 group-hover:opacity-90" />
 
-                {/* TOP BAR: Tag & Sound Indicator (Hover effects removed) */}
-                <div className="relative z-10 p-4 flex items-center justify-between w-full">
-                  <span
-                    className="text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-md shadow-xs"
-                    style={{
-                      backgroundColor: `${reel.tagColor}35`,
-                      color: '#FFFFFF',
-                      borderColor: `${reel.tagColor}80`
-                    }}
-                  >
-                    {reel.tag}
-                  </span>
-
+                {/* TOP BAR: Sound Indicator */}
+                <div className="relative z-10 p-4 flex items-center justify-end w-full">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleSound();
                     }}
-                    className="p-1.5 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white transition-all active:scale-90 cursor-pointer"
+                    className="p-1.5 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white transition-all active:scale-90 cursor-pointer ml-auto"
                     aria-label={isMuted ? "Unmute" : "Mute"}
                   >
                     {isMuted ? (
@@ -508,21 +492,6 @@ export default function ReelsSection() {
               aria-label={`Go to reel ${idx + 1}`}
             />
           ))}
-        </div>
-
-        {/* Bottom CTA Row: Enquiry Action */}
-        <div className="mt-8 sm:mt-10 pt-6 sm:pt-7 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
-          <div className="text-xs text-slate-600 font-medium text-center sm:text-left">
-            <span>Want personalized counseling on civil service or foundation tuition?</span>
-          </div>
-
-          <Link
-            to="/enquiry"
-            className="inline-flex items-center justify-center gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-5 py-2.5 rounded-full font-heading font-bold text-xs shadow-[0_4px_16px_rgba(255,56,61,0.25)] hover:shadow-[0_6px_22px_rgba(255,56,61,0.35)] transition-all group w-full sm:w-auto"
-          >
-            <span>Talk to Academic Mentor</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
         </div>
 
       </div>

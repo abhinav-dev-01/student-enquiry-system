@@ -25,7 +25,7 @@ export default function SuccessMessage({ enquiryData }) {
       {/* Verified Status Badge */}
       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#16A34A]/10 text-[#16A34A] text-xs font-bold uppercase tracking-wider mb-3">
         <ShieldCheck className="w-3.5 h-3.5" />
-        <span>Enquiry Registered to Google Sheets</span>
+        <span>Enquiry Registered Successfully</span>
       </div>
 
       {/* Heading */}

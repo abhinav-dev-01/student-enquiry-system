@@ -115,19 +115,6 @@ export default function HomePage() {
                       className="w-full h-auto object-cover"
                     />
                   </div>
-
-                  {/* Museum / Editorial Caption */}
-                  <div className="pt-4 px-2 pb-1 text-left">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="w-2 h-2 rounded-full bg-[#16A34A]" />
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0D1E32]">
-                        DISTINGUISHED COLLOQUIUM
-                      </span>
-                    </div>
-                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                      Dr. D Sajith Babu IAS sharing insights with Origami faculty and aspirants on public administration, ethics, and disciplined exam preparation.
-                    </p>
-                  </div>
                 </div>
               </div>
 
@@ -255,7 +242,7 @@ export default function HomePage() {
                       CLASS 8, 9 & 10 TUITION
                     </span>
                     <span className="text-[11px] font-mono font-medium text-slate-400">
-                      MAX 15 STUDENTS
+                      ACADEMIC COHORT
                     </span>
                   </div>
 
@@ -264,7 +251,7 @@ export default function HomePage() {
                   </h3>
 
                   <p className="text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                    First-principles academic coaching designed to eliminate exam anxiety, master core science & mathematics, and build unshakeable conceptual clarity.
+                    Comprehensive all-subject academic tuition for Classes 8, 9, and 10—covering Science, Mathematics, Social Studies, and Languages with deep conceptual understanding and board exam excellence.
                   </p>
 
                   {/* Minimal Curriculum Points */}
@@ -274,8 +261,8 @@ export default function HomePage() {
                         <Check className="w-3 h-3 stroke-[2.5]" />
                       </div>
                       <div>
-                        <span className="text-sm font-heading font-bold text-[#0D1E32]">Conceptual Science & Mathematics</span>
-                        <p className="text-xs text-slate-500 mt-0.5">Physics, Chemistry, Biology & Maths taught from first principles—zero rote memorization.</p>
+                        <span className="text-sm font-heading font-bold text-[#0D1E32]">All-Subject Conceptual Mastery</span>
+                        <p className="text-xs text-slate-500 mt-0.5">Science, Mathematics, Social Science & Languages taught from first principles—zero rote memorization.</p>
                       </div>
                     </div>
 
@@ -284,8 +271,8 @@ export default function HomePage() {
                         <Check className="w-3 h-3 stroke-[2.5]" />
                       </div>
                       <div>
-                        <span className="text-sm font-heading font-bold text-[#0D1E32]">Intimate 15-Student Cohort</span>
-                        <p className="text-xs text-slate-500 mt-0.5">Strictly capped small batches ensure teachers track every student's individual pace.</p>
+                        <span className="text-sm font-heading font-bold text-[#0D1E32]">Diagnostic Assessments & Recovery Plans</span>
+                        <p className="text-xs text-slate-500 mt-0.5">Early conceptual gap identification paired with tailored chapter recovery roadmaps.</p>
                       </div>
                     </div>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { User, MapPin, GraduationCap, Building2, Phone, BookOpen, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { User, MapPin, GraduationCap, Building2, Phone, BookOpen, AlertTriangle, ShieldCheck, X } from 'lucide-react';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import LoadingButton from './LoadingButton';
@@ -48,6 +48,19 @@ export default function EnquiryForm() {
       }
     }
   }, [searchParams]);
+
+  // Handle Cancel action: reset form and navigate back / home
+  const handleCancel = () => {
+    setFormData(INITIAL_FORM_STATE);
+    setErrors({});
+    setTouched({});
+    setServerError('');
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -134,7 +147,7 @@ export default function EnquiryForm() {
         setErrors(err.errors);
       } else {
         setServerError(
-          err.message || 'Unable to submit your enquiry to Google Sheets right now. Please try again.'
+          err.message || 'Unable to submit your enquiry right now. Please try again.'
         );
       }
     } finally {
@@ -276,14 +289,24 @@ export default function EnquiryForm() {
         <span>Your enquiry will be recorded in our secure academic admissions database. Our counselors will call you shortly.</span>
       </div>
 
-      {/* Submit Button with Loading State & Duplicate Prevention */}
-      <div className="pt-2">
+      {/* Action Buttons: Submit & Cancel */}
+      <div className="pt-3 flex flex-col-reverse sm:flex-row items-center gap-3">
+        <button
+          type="button"
+          onClick={handleCancel}
+          disabled={isSubmitting}
+          className="w-full sm:w-1/3 py-3.5 px-5 rounded-[14px] border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-heading font-bold text-sm transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.99] flex items-center justify-center gap-2 shadow-xs"
+        >
+          <X className="w-4 h-4 text-slate-400" />
+          <span>Cancel</span>
+        </button>
+
         <LoadingButton
           type="submit"
           loading={isSubmitting}
           disabled={isSubmitting}
-          loadingText="Submitting to Google Sheets..."
-          className="w-full text-sm py-3.5"
+          loadingText="Submitting..."
+          className="w-full sm:w-2/3 text-sm py-3.5"
         >
           Submit Student Enquiry
         </LoadingButton>
