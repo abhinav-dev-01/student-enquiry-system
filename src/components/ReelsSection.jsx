@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight, ArrowLeftRight } from 'lucide-react';
 
 const REELS_DATA = [
@@ -46,7 +46,7 @@ export default function ReelsSection() {
   const scrollTimeoutRef = useRef(null);
 
   // Safe video playback function with iOS Safari / Chrome autoplay fallback
-  const playVideoSafely = (vid, idx) => {
+  const playVideoSafely = useCallback((vid, idx) => {
     if (!vid) return;
     vid.muted = isMuted;
     vid.defaultMuted = true;
@@ -68,7 +68,7 @@ export default function ReelsSection() {
             });
         });
     }
-  };
+  }, [isMuted]);
 
   // IntersectionObserver for Section Entrance and Instant Autoplay Trigger
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function ReelsSection() {
     }
 
     return () => observer.disconnect();
-  }, [activeReelIndex, isMuted]);
+  }, [activeReelIndex, playVideoSafely]);
 
   // Handle global unmute / mute toggle
   const toggleSound = () => {

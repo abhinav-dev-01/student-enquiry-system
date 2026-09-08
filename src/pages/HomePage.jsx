@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import ReelsSection from '../components/ReelsSection';
 import CTASection from '../components/CTASection';
@@ -9,13 +9,10 @@ import {
   Award, 
   Target, 
   Users, 
-  Check, 
-  Compass, 
-  ArrowUpRight
+  Check
 } from 'lucide-react';
 
 export default function HomePage() {
-  const location = useLocation();
 
   // Interactive FAQ state
   const [openFaq, setOpenFaq] = useState(null);

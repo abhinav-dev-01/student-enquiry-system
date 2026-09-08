@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { User, MapPin, GraduationCap, Building2, Phone, BookOpen, AlertTriangle, ShieldCheck, X } from 'lucide-react';
 import FormInput from './FormInput';
@@ -31,23 +31,25 @@ export default function EnquiryForm() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const [formData, setFormData] = useState(INITIAL_FORM_STATE);
+  const [formData, setFormData] = useState(() => {
+    const programParam = searchParams.get('program');
+    let initialCourse = '';
+    if (programParam) {
+      if (programParam.toLowerCase().includes('civil')) {
+        initialCourse = 'Civil Service';
+      } else if (programParam.toLowerCase().includes('tuition')) {
+        initialCourse = 'Tuition';
+      }
+    }
+    return {
+      ...INITIAL_FORM_STATE,
+      course: initialCourse
+    };
+  });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState('');
-
-  // Handle URL pre-fill for program parameter (e.g. /enquiry?program=Civil Service)
-  useEffect(() => {
-    const programParam = searchParams.get('program');
-    if (programParam) {
-      if (programParam.toLowerCase().includes('civil')) {
-        setFormData(prev => ({ ...prev, course: 'Civil Service' }));
-      } else if (programParam.toLowerCase().includes('tuition')) {
-        setFormData(prev => ({ ...prev, course: 'Tuition' }));
-      }
-    }
-  }, [searchParams]);
 
   // Handle Cancel action: reset form and navigate back / home
   const handleCancel = () => {

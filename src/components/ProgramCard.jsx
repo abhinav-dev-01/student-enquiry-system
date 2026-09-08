@@ -13,8 +13,7 @@ export default function ProgramCard({
   description,
   iconName,
   badge,
-  highlights = [],
-  popular = false
+  highlights = []
 }) {
   const IconComponent = iconMap[iconName] || BookOpen;
   const isCivilService = title.toLowerCase().includes('civil');

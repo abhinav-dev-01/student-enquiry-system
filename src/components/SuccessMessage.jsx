@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Home, PlusCircle, User, Phone, BookOpen, GraduationCap, Building2, Clock, ShieldCheck, MapPin } from 'lucide-react';
+import { Home, PlusCircle, User, Phone, BookOpen, GraduationCap, Building2, Clock, ShieldCheck, MapPin } from 'lucide-react';
 import Logo from './Logo';
 
 export default function SuccessMessage({ enquiryData }) {

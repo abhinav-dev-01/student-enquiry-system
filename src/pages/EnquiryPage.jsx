@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ShieldCheck, CheckCircle2, Phone, Clock } from 'lucide-react';
 import EnquiryForm from '../components/EnquiryForm';
-import Logo from '../components/Logo';
 
 export default function EnquiryPage() {
   useEffect(() => {

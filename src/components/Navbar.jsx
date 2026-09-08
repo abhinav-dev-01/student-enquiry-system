@@ -55,10 +55,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onWindowScroll);
   }, [location.pathname]);
 
-  // Close mobile drawer on route transition
-  useEffect(() => {
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
     setMobileMenuOpen(false);
-  }, [location.pathname]);
+  }
 
   const handleNavClick = (sectionKey) => {
     setMobileMenuOpen(false);

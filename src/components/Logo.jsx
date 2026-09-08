@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Logo({ className = "h-10 sm:h-12 md:h-14 lg:h-16", showText = true, textDark = true }) {
+export default function Logo({ className = "h-10 sm:h-12 md:h-14 lg:h-16" }) {
   return (
     <div className="flex items-center shrink-0 select-none bg-transparent">
       <img

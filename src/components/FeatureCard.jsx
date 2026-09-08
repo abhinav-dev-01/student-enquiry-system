@@ -19,7 +19,6 @@ export default function FeatureCard({
   const IconComponent = iconMap[iconName] || Target;
   const isFirst = stepNumber === 1;
   const isSecond = stepNumber === 2;
-  const isThird = stepNumber === 3;
 
   // Thematic brand accents for each pillar
   const theme = isFirst

@@ -3,16 +3,10 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   Phone, 
-  Check, 
-  ArrowUpRight,
-  ShieldCheck,
   BookOpen,
   Scale,
   Users,
-  FileText,
-  Compass,
-  PenTool,
-  Award
+  FileText
 } from 'lucide-react';
 
 export default function AboutPage() {
