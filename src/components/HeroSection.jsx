@@ -34,7 +34,7 @@ export default function HeroSection() {
   const videoScale = 1 + Math.min(scrollY * 0.00025, 0.08);
 
   return (
-    <section className="relative min-h-[88vh] sm:min-h-[86vh] md:min-h-[93vh] flex flex-col justify-center pt-20 pb-12 sm:pt-24 sm:pb-14 md:pt-32 md:pb-20 bg-white overflow-hidden">
+    <section className="relative min-h-[58vh] sm:min-h-[65vh] md:min-h-[72vh] flex flex-col justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 md:pt-28 md:pb-10 bg-white overflow-hidden">
       {/* Background Video with Mobile-Responsive Framing & Smooth Scroll-Linked Zoom-in */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
@@ -54,8 +54,8 @@ export default function HeroSection() {
           <source src="/rempove_text_and_stars_make_it%20-%20Copy.mp4" type="video/mp4" />
         </video>
 
-        {/* Smooth Bottom Area Blend Gradient into White (Tailored for mobile & desktop) */}
-        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-40 md:h-56 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
+        {/* Smooth Bottom Area Blend Gradient into White */}
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 md:h-32 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
