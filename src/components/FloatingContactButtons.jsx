@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 export default function FloatingContactButtons() {
   const whatsappNumber = "919249046898";
@@ -10,26 +10,18 @@ export default function FloatingContactButtons() {
     <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-40 flex flex-col gap-3 items-end pointer-events-none">
       
       {/* Quick Direct Call Floating Action */}
-      <div className="group relative flex items-center pointer-events-auto">
-        <span className="hidden sm:block absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-[#0D1E32] text-white text-xs font-heading font-medium tracking-tight whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md pointer-events-none">
-          Call: +91 70127 43030
-        </span>
+      <div className="relative flex items-center pointer-events-auto">
         <a
           href={`tel:${callNumber}`}
           className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#0D1E32] hover:bg-[#1E3A5F] text-white flex items-center justify-center shadow-[0_8px_20px_rgba(13,30,50,0.3)] hover:shadow-[0_12px_28px_rgba(13,30,50,0.45)] hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-white/20"
-          aria-label="Call Admissions at +91 70127 43030"
-          title="Call +91 70127 43030"
+          aria-label="Call Admissions"
         >
           <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-[#25ABE2]" />
         </a>
       </div>
 
       {/* WhatsApp Floating Action with Pulse Ring */}
-      <div className="group relative flex items-center pointer-events-auto">
-        <span className="hidden sm:block absolute right-full mr-3 px-3 py-1.5 rounded-lg bg-[#0D1E32] text-white text-xs font-heading font-medium tracking-tight whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md pointer-events-none">
-          WhatsApp: +91 92490 46898
-        </span>
-        
+      <div className="relative flex items-center pointer-events-auto">
         {/* Glowing pulse ring */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping pointer-events-none" />
 
@@ -38,8 +30,7 @@ export default function FloatingContactButtons() {
           target="_blank"
           rel="noopener noreferrer"
           className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-[0_8px_24px_rgba(37,211,102,0.4)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.55)] hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-white/30"
-          aria-label="Chat on WhatsApp +91 92490 46898"
-          title="Chat on WhatsApp +91 92490 46898"
+          aria-label="Chat on WhatsApp"
         >
           {/* WhatsApp SVG Icon */}
           <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24">
