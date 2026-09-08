@@ -123,7 +123,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#25ABE2] shrink-0 mt-1" />
-                <span>Origami Learning Academic Campus, Main Road</span>
+                <span>Cherkkala, Kasaragod</span>
               </li>
             </ul>
           </div>
