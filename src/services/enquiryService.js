@@ -68,6 +68,11 @@ export async function submitStudentEnquiry(formData) {
     };
   }
 
+  // Generate formatted timestamp: YYYY-MM-DD HH:mm:ss in Indian Standard Time / local time
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  const formattedTimestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+
   // Exact JSON payload matching the Google Apps Script Web App requirements
   const payload = {
     name: formData.name.trim(),
@@ -75,7 +80,10 @@ export async function submitStudentEnquiry(formData) {
     class: formData.class.trim(),
     school: formData.school.trim(),
     mobile: formData.mobile.trim(),
-    course: formData.course.trim()
+    course: formData.course.trim(),
+    submittedAt: formattedTimestamp,
+    SubmittedAt: formattedTimestamp,
+    timestamp: formattedTimestamp
   };
 
   try {
@@ -122,7 +130,7 @@ export async function submitStudentEnquiry(formData) {
       School_College: payload.school,
       Mobile_Number: payload.mobile,
       Interested_Program: payload.course,
-      SubmittedAt: new Date().toISOString()
+      SubmittedAt: formattedTimestamp
     };
 
     // Store in SessionStorage for receipt view / page refresh continuity

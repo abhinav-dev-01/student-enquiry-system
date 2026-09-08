@@ -6,7 +6,13 @@ import {
   Check, 
   ArrowUpRight,
   ShieldCheck,
-  BookOpen
+  BookOpen,
+  Scale,
+  Users,
+  FileText,
+  Compass,
+  PenTool,
+  Award
 } from 'lucide-react';
 
 export default function AboutPage() {
@@ -170,26 +176,38 @@ export default function AboutPage() {
 
               {/* Minimalist 4-Pillar Grid with Hairlines */}
               <div className="pt-4 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
-                  <span className="text-[11px] font-mono font-bold text-[#FF383D] block mb-1">01</span>
+                <div className="p-3.5 bg-white rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors shadow-xs">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] font-mono font-bold text-[#FF383D]">01</span>
+                    <BookOpen className="w-4 h-4 text-[#FF383D]" />
+                  </div>
                   <h4 className="font-heading font-bold text-sm text-[#0D1E32] mb-0.5">Real Case Studies</h4>
                   <p className="text-xs text-slate-500">Public policy & governance challenges analyzed in real time.</p>
                 </div>
 
-                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
-                  <span className="text-[11px] font-mono font-bold text-[#25ABE2] block mb-1">02</span>
+                <div className="p-3.5 bg-white rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors shadow-xs">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] font-mono font-bold text-[#25ABE2]">02</span>
+                    <Scale className="w-4 h-4 text-[#25ABE2]" />
+                  </div>
                   <h4 className="font-heading font-bold text-sm text-[#0D1E32] mb-0.5">Administrative Ethics</h4>
                   <p className="text-xs text-slate-500">GS-IV integrity workshops and ethical dilemma resolution.</p>
                 </div>
 
-                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
-                  <span className="text-[11px] font-mono font-bold text-[#16A34A] block mb-1">03</span>
+                <div className="p-3.5 bg-white rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors shadow-xs">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] font-mono font-bold text-[#16A34A]">03</span>
+                    <Users className="w-4 h-4 text-[#16A34A]" />
+                  </div>
                   <h4 className="font-heading font-bold text-sm text-[#0D1E32] mb-0.5">Interview Simulations</h4>
                   <p className="text-xs text-slate-500">1-on-1 personality mock boards with senior civil officers.</p>
                 </div>
 
-                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
-                  <span className="text-[11px] font-mono font-bold text-[#0D1E32] block mb-1">04</span>
+                <div className="p-3.5 bg-white rounded-xl border border-slate-200/80 hover:border-slate-300 transition-colors shadow-xs">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] font-mono font-bold text-[#0D1E32]">04</span>
+                    <FileText className="w-4 h-4 text-[#0D1E32]" />
+                  </div>
                   <h4 className="font-heading font-bold text-sm text-[#0D1E32] mb-0.5">Daily Editorial Strategy</h4>
                   <p className="text-xs text-slate-500">Extracting constitutional angles from morning national headlines.</p>
                 </div>

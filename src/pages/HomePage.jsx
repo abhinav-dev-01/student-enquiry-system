@@ -7,8 +7,7 @@ import {
   ArrowRight, 
   ChevronDown, 
   Award, 
-  Sparkles, 
-  Calendar, 
+  Target, 
   Users, 
   Check, 
   Compass, 
@@ -383,7 +382,7 @@ export default function HomePage() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-50 text-[#25ABE2] flex items-center justify-center group-hover:bg-[#25ABE2] group-hover:text-white transition-all duration-300 shadow-xs group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(37,171,226,0.3)]">
-                      <Sparkles className="w-6 h-6 transition-transform group-hover:rotate-6" />
+                      <Target className="w-6 h-6 transition-transform group-hover:rotate-6" />
                     </div>
                     <span className="text-xs font-mono font-extrabold text-[#25ABE2] bg-sky-50/80 px-3 py-1 rounded-full border border-sky-100/80">
                       02
@@ -417,7 +416,7 @@ export default function HomePage() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 text-[#16A34A] flex items-center justify-center group-hover:bg-[#16A34A] group-hover:text-white transition-all duration-300 shadow-xs group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(22,163,74,0.3)]">
-                      <Compass className="w-6 h-6 transition-transform group-hover:rotate-6" />
+                      <Users className="w-6 h-6 transition-transform group-hover:rotate-6" />
                     </div>
                     <span className="text-xs font-mono font-extrabold text-[#16A34A] bg-emerald-50/80 px-3 py-1 rounded-full border border-emerald-100/80">
                       03

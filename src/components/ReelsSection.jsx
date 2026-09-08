@@ -227,17 +227,12 @@ export default function ReelsSection() {
       ref={sectionRef}
       className="py-14 md:py-18 bg-white text-[#0D1E32] relative overflow-hidden border-b border-slate-200/80 scroll-mt-20"
     >
-      {/* Subtle Ambient Background Glows */}
-      <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-red-100/35 rounded-full blur-[100px] pointer-events-none -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-sky-100/35 rounded-full blur-[100px] pointer-events-none translate-y-1/2" />
-      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:28px_28px] opacity-40 pointer-events-none" />
-
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header with Title & Interactive Unmute / Sound Pill */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8 sm:mb-12 text-left">
           <div className="max-w-xl">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-50 border border-red-100/80 shadow-xs mb-3">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200/80 shadow-xs mb-3">
               <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF383D] uppercase">
                 LEADERSHIP TALKS & STRATEGIC INSIGHTS
               </span>

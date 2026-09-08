@@ -23,11 +23,6 @@ export default function Footer() {
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-5">
               Origami Learning is an academic institute committed to concept-first learning. Guiding students with structured pedagogy in civil services and school & college curricula.
             </p>
-
-            <div className="flex items-center gap-2.5 text-xs text-slate-300 bg-white/5 px-3.5 py-2 rounded-lg border border-white/10">
-              <span className="w-2 h-2 rounded-full bg-[#25ABE2]"></span>
-              <span>Academic Session 2026–2027 Admissions Open</span>
-            </div>
           </div>
 
           {/* Quick Links */}

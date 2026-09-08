@@ -139,7 +139,7 @@ export default function Navbar() {
               className="flex items-center shrink-0 py-0.5 select-none focus:outline-none bg-transparent"
               aria-label="Origami Learning Home"
             >
-              <Logo className="h-8 sm:h-9 md:h-11 lg:h-12 max-w-[160px] sm:max-w-[200px] md:max-w-none transition-transform group-hover:scale-105 duration-200" />
+              <Logo className="h-10 sm:h-12 md:h-14 lg:h-16 max-w-[200px] sm:max-w-[250px] md:max-w-none transition-transform group-hover:scale-105 duration-200" />
             </Link>
 
             {/* Desktop Navigation Pill Bar */}
