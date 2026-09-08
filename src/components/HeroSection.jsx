@@ -34,7 +34,7 @@ export default function HeroSection() {
   const videoScale = 1 + Math.min(scrollY * 0.00025, 0.08);
 
   return (
-    <section className="relative min-h-[100dvh] h-[100dvh] sm:min-h-[75vh] sm:h-auto md:min-h-[85vh] flex flex-col justify-center pt-20 pb-16 sm:pt-24 sm:pb-12 md:pt-28 md:pb-16 bg-white overflow-hidden">
+    <section className="relative min-h-[100dvh] h-[100dvh] sm:min-h-[75vh] sm:h-auto md:min-h-[85vh] flex flex-col justify-start pt-24 pb-12 sm:pt-28 sm:pb-12 md:pt-36 md:pb-16 bg-white overflow-hidden">
       {/* Background Video with Mobile-Responsive Framing & Smooth Scroll-Linked Zoom-in */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
