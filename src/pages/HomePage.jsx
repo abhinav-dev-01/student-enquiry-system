@@ -290,99 +290,134 @@ export default function HomePage() {
         </section>
 
         {/* ------------------------------------------------------------------------- */}
-        {/* SECTION 3: THE HUMAN CRAFT (3 Main Point Cards with Hover Effects) */}
+        {/* SECTION 3: THE HUMAN CRAFT (3 Main Point Cards with Modern Theme & Hover Effects) */}
         {/* ------------------------------------------------------------------------- */}
-        <section id="why-us" className="py-16 md:py-24 bg-white border-b border-slate-200/80 scroll-mt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="why-us" className="py-20 md:py-28 bg-[#F8FAFC] relative overflow-hidden border-b border-slate-200/80 scroll-mt-24">
+          {/* Subtle Ambient Background Glows */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-100/40 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-sky-100/40 rounded-full blur-3xl pointer-events-none translate-y-1/2" />
+          <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             {/* Header */}
-            <div className="max-w-2xl text-left mb-12">
-              <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF383D] uppercase block mb-2">
-                03 / THE HUMAN CRAFT
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-[#0D1E32] tracking-tight">
+            <div className="max-w-2xl text-left mb-14">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-slate-200/80 shadow-xs mb-3 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-[#FF383D] animate-pulse" />
+                <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF383D] uppercase">
+                  03 / THE HUMAN CRAFT
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-[#0D1E32] tracking-tight">
                 Why Students Excel at Origami
               </h2>
-              <p className="text-slate-600 text-base mt-2">
-                Three core academic commitments that set our classrooms apart from mass coaching centres.
+              <p className="text-slate-600 text-base sm:text-lg mt-3 font-normal leading-relaxed">
+                Three foundational academic commitments that set our classrooms apart from mass coaching factories.
               </p>
             </div>
 
-            {/* 3 Main Point Cards with Hover Effects */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            {/* 3 Main Point Cards with Modern Glass/Gradient Theme & Dynamic Hover Effects */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 text-left">
               
-              {/* Card 1: Handwritten Feedback (Red Hover) */}
-              <div className="group bg-[#FAFBFD] rounded-2xl border border-slate-200/90 p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#FF383D] hover:shadow-[0_16px_36px_rgba(255,56,61,0.12)]">
+              {/* Card 1: Handwritten Feedback (Red Theme) */}
+              <div className="group relative bg-white/95 backdrop-blur-md rounded-3xl p-8 sm:p-9 border border-slate-200/90 shadow-[0_4px_20px_rgba(13,30,50,0.04)] hover:shadow-[0_24px_48px_-12px_rgba(255,56,61,0.22)] hover:border-[#FF383D]/40 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
+                {/* Modern Gradient Accent Line on Top */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#FF383D] via-orange-400 to-[#FF383D] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Ambient Radial Glow on Hover */}
+                <div className="absolute -top-16 -right-16 w-36 h-36 bg-red-100/80 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-mono font-bold text-[#FF383D] bg-white px-2.5 py-1 rounded-md border border-slate-200/80">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-50 text-[#FF383D] flex items-center justify-center group-hover:bg-[#FF383D] group-hover:text-white transition-all duration-300 shadow-xs group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(255,56,61,0.3)]">
+                      <PenTool className="w-6 h-6 transition-transform group-hover:rotate-6" />
+                    </div>
+                    <span className="text-xs font-mono font-extrabold text-[#FF383D] bg-red-50/80 px-3 py-1 rounded-full border border-red-100/80">
                       01
                     </span>
-                    <PenTool className="w-4 h-4 text-slate-400 group-hover:text-[#FF383D] transition-colors" />
                   </div>
 
-                  <h3 className="text-xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#FF383D] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#FF383D] transition-colors leading-snug">
                     Handwritten Faculty Feedback
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed font-sans">
+                  <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-sans">
                     Students write answers on real paper every day. Faculty provide line-by-line red-ink critiques returned within 24 hours to build structural articulation.
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-slate-200/70 flex items-center gap-2 text-xs text-slate-500 font-medium">
-                  <Check className="w-3.5 h-3.5 text-[#16A34A]" />
-                  <span>Returned within 24 hours</span>
+                <div className="mt-8 pt-5 border-t border-slate-100 flex items-center gap-2.5">
+                  <span className="flex h-5 w-5 rounded-full bg-emerald-100 text-[#16A34A] items-center justify-center">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </span>
+                  <span className="text-xs font-heading font-bold text-slate-700 tracking-tight">Returned within 24 hours</span>
                 </div>
               </div>
 
-              {/* Card 2: Zero-Overnight Doubt (Blue Hover) */}
-              <div className="group bg-[#FAFBFD] rounded-2xl border border-slate-200/90 p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#25ABE2] hover:shadow-[0_16px_36px_rgba(37,171,226,0.14)]">
+              {/* Card 2: Zero-Overnight Doubt (Blue Theme) */}
+              <div className="group relative bg-white/95 backdrop-blur-md rounded-3xl p-8 sm:p-9 border border-slate-200/90 shadow-[0_4px_20px_rgba(13,30,50,0.04)] hover:shadow-[0_24px_48px_-12px_rgba(37,171,226,0.24)] hover:border-[#25ABE2]/40 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
+                {/* Modern Gradient Accent Line on Top */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#25ABE2] via-cyan-400 to-[#25ABE2] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Ambient Radial Glow on Hover */}
+                <div className="absolute -top-16 -right-16 w-36 h-36 bg-sky-100/80 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-mono font-bold text-[#25ABE2] bg-white px-2.5 py-1 rounded-md border border-slate-200/80">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-50 text-[#25ABE2] flex items-center justify-center group-hover:bg-[#25ABE2] group-hover:text-white transition-all duration-300 shadow-xs group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(37,171,226,0.3)]">
+                      <Clock className="w-6 h-6 transition-transform group-hover:rotate-6" />
+                    </div>
+                    <span className="text-xs font-mono font-extrabold text-[#25ABE2] bg-sky-50/80 px-3 py-1 rounded-full border border-sky-100/80">
                       02
                     </span>
-                    <Clock className="w-4 h-4 text-slate-400 group-hover:text-[#25ABE2] transition-colors" />
                   </div>
 
-                  <h3 className="text-xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#25ABE2] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#25ABE2] transition-colors leading-snug">
                     Zero-Overnight Doubt Rule
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed font-sans">
+                  <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-sans">
                     Dedicated teacher tables remain open every evening after lectures so no student carries today’s conceptual confusion into tomorrow’s class.
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-slate-200/70 flex items-center gap-2 text-xs text-slate-500 font-medium">
-                  <Check className="w-3.5 h-3.5 text-[#16A34A]" />
-                  <span>Daily 4:00 – 7:30 PM Clinic</span>
+                <div className="mt-8 pt-5 border-t border-slate-100 flex items-center gap-2.5">
+                  <span className="flex h-5 w-5 rounded-full bg-emerald-100 text-[#16A34A] items-center justify-center">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </span>
+                  <span className="text-xs font-heading font-bold text-slate-700 tracking-tight">Daily 4:00 – 7:30 PM Clinic</span>
                 </div>
               </div>
 
-              {/* Card 3: Dedicated 1-on-1 Mentorship (Green Hover) */}
-              <div className="group bg-[#FAFBFD] rounded-2xl border border-slate-200/90 p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#16A34A] hover:shadow-[0_16px_36px_rgba(22,163,74,0.12)]">
+              {/* Card 3: Dedicated 1-on-1 Mentorship (Green Theme) */}
+              <div className="group relative bg-white/95 backdrop-blur-md rounded-3xl p-8 sm:p-9 border border-slate-200/90 shadow-[0_4px_20px_rgba(13,30,50,0.04)] hover:shadow-[0_24px_48px_-12px_rgba(22,163,74,0.22)] hover:border-[#16A34A]/40 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
+                {/* Modern Gradient Accent Line on Top */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#16A34A] via-teal-400 to-[#16A34A] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Ambient Radial Glow on Hover */}
+                <div className="absolute -top-16 -right-16 w-36 h-36 bg-emerald-100/80 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-mono font-bold text-[#16A34A] bg-white px-2.5 py-1 rounded-md border border-slate-200/80">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 text-[#16A34A] flex items-center justify-center group-hover:bg-[#16A34A] group-hover:text-white transition-all duration-300 shadow-xs group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(22,163,74,0.3)]">
+                      <Compass className="w-6 h-6 transition-transform group-hover:rotate-6" />
+                    </div>
+                    <span className="text-xs font-mono font-extrabold text-[#16A34A] bg-emerald-50/80 px-3 py-1 rounded-full border border-emerald-100/80">
                       03
                     </span>
-                    <Compass className="w-4 h-4 text-slate-400 group-hover:text-[#16A34A] transition-colors" />
                   </div>
 
-                  <h3 className="text-xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#16A34A] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#16A34A] transition-colors leading-snug">
                     Dedicated 1-on-1 Mentorship
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed font-sans">
+                  <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-sans">
                     Each student is paired with an academic mentor for weekly one-on-one reviews, timetable optimization, and continuous exam composure tracking.
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-slate-200/70 flex items-center gap-2 text-xs text-slate-500 font-medium">
-                  <Check className="w-3.5 h-3.5 text-[#16A34A]" />
-                  <span>Weekly 20-min 1-on-1 session</span>
+                <div className="mt-8 pt-5 border-t border-slate-100 flex items-center gap-2.5">
+                  <span className="flex h-5 w-5 rounded-full bg-emerald-100 text-[#16A34A] items-center justify-center">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </span>
+                  <span className="text-xs font-heading font-bold text-slate-700 tracking-tight">Weekly 20-min 1-on-1 session</span>
                 </div>
               </div>
 
