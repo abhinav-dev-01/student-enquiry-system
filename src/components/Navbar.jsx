@@ -137,10 +137,10 @@ export default function Navbar() {
                   handleNavClick('home');
                 }
               }}
-              className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#FF383D] focus:ring-offset-2 rounded-xl transition-transform"
+              className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#FF383D] focus:ring-offset-2 rounded-xl transition-transform py-1"
               aria-label="Origami Learning Home"
             >
-              <Logo className="w-9 h-9 sm:w-10 sm:h-10 transition-transform group-hover:scale-105 duration-200" />
+              <Logo className="h-8 sm:h-9 md:h-10 transition-transform group-hover:scale-105 duration-200" />
             </Link>
 
             {/* Desktop Navigation Pill Bar */}

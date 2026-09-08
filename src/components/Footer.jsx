@@ -15,8 +15,8 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <Link to="/" className="mb-4">
-              <Logo className="w-10 h-10" textDark={false} />
+            <Link to="/" className="mb-4 bg-white/95 rounded-xl px-3 py-1.5 inline-flex items-center">
+              <Logo className="h-7 sm:h-8" />
             </Link>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-5">
