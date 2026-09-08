@@ -70,7 +70,7 @@ export default function HeroSection() {
 
           {/* 2-3 Line Description */}
           <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal mb-6 sm:mb-7 max-w-xl">
-            First-principles academic coaching built on small cohorts, daily handwritten answer evaluations, and dedicated 1-on-1 mentorship from distinguished educators.
+            Comprehensive Civil Service coaching and school foundation tuition built on small cohorts, daily handwritten answer evaluations, and dedicated 1-on-1 mentorship.
           </p>
 
           {/* Increased Size Action Buttons Row - Perfectly Placed & Visible on Mobile */}
