@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX, Sparkles, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Sparkles, ChevronLeft, ChevronRight, ArrowRight, ArrowLeftRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const REELS_DATA = [
@@ -41,26 +41,26 @@ export default function ReelsSection() {
   const [playingStates, setPlayingStates] = useState({ 0: true, 1: false, 2: false });
   const [progresses, setProgresses] = useState({ 0: 0, 1: 0, 2: 0 });
   const [sectionInView, setSectionInView] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
+  const [hasSwiped, setHasSwiped] = useState(false);
 
   const sectionRef = useRef(null);
   const videoRefs = useRef([]);
+  const cardRefs = useRef([]);
   const containerRef = useRef(null);
+  const scrollTimeoutRef = useRef(null);
 
-  // Setup IntersectionObserver for Section Entrance and Autoplay Trigger
+  // IntersectionObserver for Section Entrance and Autoplay Trigger
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setSectionInView(true);
-          // Play the active reel when section enters viewport
           const activeVid = videoRefs.current[activeReelIndex];
           if (activeVid) {
             activeVid.play().catch(() => {});
             setPlayingStates(prev => ({ ...prev, [activeReelIndex]: true }));
           }
         } else {
-          // Pause all when scrolled out
           videoRefs.current.forEach(v => {
             if (v && !v.paused) {
               v.pause();
@@ -69,7 +69,7 @@ export default function ReelsSection() {
           setPlayingStates({ 0: false, 1: false, 2: false });
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -83,12 +83,10 @@ export default function ReelsSection() {
   const toggleSound = () => {
     const nextMuted = !isMuted;
     setIsMuted(nextMuted);
-    setHasInteracted(true);
     videoRefs.current.forEach(v => {
       if (v) v.muted = nextMuted;
     });
 
-    // Make sure active reel is unmuted and playing
     const activeVid = videoRefs.current[activeReelIndex];
     if (activeVid) {
       activeVid.muted = nextMuted;
@@ -102,10 +100,7 @@ export default function ReelsSection() {
     const vid = videoRefs.current[idx];
     if (!vid) return;
 
-    setHasInteracted(true);
-
     if (vid.paused) {
-      // Pause others
       videoRefs.current.forEach((otherVid, i) => {
         if (otherVid && i !== idx && !otherVid.paused) {
           otherVid.pause();
@@ -133,21 +128,86 @@ export default function ReelsSection() {
     }
   };
 
+  // Scroll to a specific reel smoothly (both desktop & mobile)
   const scrollToIndex = (idx) => {
     if (idx < 0 || idx >= REELS_DATA.length) return;
     setActiveReelIndex(idx);
-    const targetVid = videoRefs.current[idx];
-    if (targetVid) {
-      videoRefs.current.forEach((otherVid, i) => {
-        if (otherVid && i !== idx && !otherVid.paused) {
+    setHasSwiped(true);
+
+    const cardEl = cardRefs.current[idx];
+    const container = containerRef.current;
+    if (cardEl && container) {
+      const cardLeft = cardEl.offsetLeft;
+      const cardWidth = cardEl.offsetWidth;
+      const containerWidth = container.offsetWidth;
+      const scrollPos = cardLeft - (containerWidth - cardWidth) / 2;
+
+      container.scrollTo({
+        left: Math.max(0, scrollPos),
+        behavior: 'smooth'
+      });
+    }
+
+    // Auto-switch video playback
+    videoRefs.current.forEach((otherVid, i) => {
+      if (otherVid) {
+        if (i === idx) {
+          otherVid.muted = isMuted;
+          otherVid.play().catch(() => {});
+          setPlayingStates(prev => ({ ...prev, [i]: true }));
+        } else {
           otherVid.pause();
           setPlayingStates(prev => ({ ...prev, [i]: false }));
         }
-      });
-      targetVid.muted = isMuted;
-      targetVid.play().catch(() => {});
-      setPlayingStates(prev => ({ ...prev, [idx]: true }));
+      }
+    });
+  };
+
+  // Mobile horizontal swipe detection: smoothly auto-tracks centered reel
+  const handleContainerScroll = () => {
+    if (!containerRef.current) return;
+    setHasSwiped(true);
+
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
     }
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      const container = containerRef.current;
+      if (!container) return;
+      const scrollLeft = container.scrollLeft;
+      const containerCenter = scrollLeft + container.offsetWidth / 2;
+
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      cardRefs.current.forEach((card, idx) => {
+        if (card) {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const dist = Math.abs(cardCenter - containerCenter);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIdx = idx;
+          }
+        }
+      });
+
+      if (closestIdx !== activeReelIndex) {
+        setActiveReelIndex(closestIdx);
+        videoRefs.current.forEach((v, i) => {
+          if (v) {
+            if (i === closestIdx) {
+              v.muted = isMuted;
+              v.play().catch(() => {});
+              setPlayingStates(prev => ({ ...prev, [i]: true }));
+            } else {
+              v.pause();
+              setPlayingStates(prev => ({ ...prev, [i]: false }));
+            }
+          }
+        });
+      }
+    }, 60);
   };
 
   return (
@@ -164,7 +224,7 @@ export default function ReelsSection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header with Title & Interactive Unmute / Sound Pill */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-10 sm:mb-14 text-left">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8 sm:mb-12 text-left">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100/80 shadow-xs mb-3">
               <Sparkles className="w-3.5 h-3.5 text-[#FF383D]" />
@@ -180,8 +240,8 @@ export default function ReelsSection() {
             </p>
           </div>
 
-          {/* Interactive Sound Controller Pill with Pulse Animation */}
-          <div className="flex items-center gap-2.5 shrink-0">
+          {/* Interactive Sound Controller Pill & Carousel Arrows */}
+          <div className="flex items-center justify-between sm:justify-end gap-2.5 shrink-0 w-full sm:w-auto">
             <button
               onClick={toggleSound}
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-heading font-bold transition-all duration-300 cursor-pointer shadow-xs ${
@@ -213,12 +273,12 @@ export default function ReelsSection() {
               )}
             </button>
 
-            {/* Carousel Navigation Arrows for Small/Medium Screens */}
-            <div className="hidden sm:flex items-center gap-1">
+            {/* Carousel Navigation Arrows */}
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={() => scrollToIndex(activeReelIndex - 1)}
                 disabled={activeReelIndex === 0}
-                className="p-2 rounded-full bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed border border-slate-200 text-slate-700 transition-colors cursor-pointer shadow-xs"
+                className="p-2 rounded-full bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed border border-slate-200 text-slate-700 transition-colors cursor-pointer shadow-xs active:scale-95"
                 aria-label="Previous Reel"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -226,7 +286,7 @@ export default function ReelsSection() {
               <button
                 onClick={() => scrollToIndex(activeReelIndex + 1)}
                 disabled={activeReelIndex === REELS_DATA.length - 1}
-                className="p-2 rounded-full bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed border border-slate-200 text-slate-700 transition-colors cursor-pointer shadow-xs"
+                className="p-2 rounded-full bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed border border-slate-200 text-slate-700 transition-colors cursor-pointer shadow-xs active:scale-95"
                 aria-label="Next Reel"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -235,10 +295,24 @@ export default function ReelsSection() {
           </div>
         </div>
 
-        {/* 3 Reduced-Size Premium Reel Phone Cards Grid with Sleek Hover Effects */}
+        {/* Mobile Swipe Guidance Hint */}
+        <div className="flex sm:hidden items-center justify-between text-xs text-slate-500 mb-3 px-1">
+          <span className="flex items-center gap-1.5 font-medium">
+            <ArrowLeftRight className="w-3.5 h-3.5 text-[#FF383D] animate-pulse" />
+            <span>Swipe left to view all reels</span>
+          </span>
+          <span className="font-mono font-bold text-[#FF383D]">
+            {activeReelIndex + 1} / {REELS_DATA.length}
+          </span>
+        </div>
+
+        {/* REELS CAROUSEL / SLIDER CONTAINER */}
+        {/* On Mobile: Smooth Horizontal Slide with Snap Centering & 3D Depth Scale */}
+        {/* On Desktop: Centered 3-Card Grid with Rich Themed Hover Effects */}
         <div
           ref={containerRef}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6 items-stretch justify-center max-w-4xl mx-auto"
+          onScroll={handleContainerScroll}
+          className="flex sm:grid sm:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none pb-4 sm:pb-0 px-4 sm:px-0 -mx-4 sm:mx-auto max-w-4xl scroll-smooth items-stretch justify-start sm:justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {REELS_DATA.map((reel, idx) => {
             const isPlaying = !!playingStates[idx];
@@ -255,18 +329,23 @@ export default function ReelsSection() {
             return (
               <div
                 key={reel.id}
+                ref={el => (cardRefs.current[idx] = el)}
                 onClick={() => togglePlayPause(idx)}
-                className={`group relative rounded-[24px] sm:rounded-[26px] overflow-hidden bg-slate-950 border border-slate-200/90 transition-all duration-500 cursor-pointer flex flex-col justify-between shadow-[0_10px_30px_rgba(13,30,50,0.08)] hover:-translate-y-2 ${shadowHoverMap[reel.id]} ${
-                  isActive ? 'ring-2 ring-[#FF383D]/40' : ''
+                className={`group relative rounded-[24px] sm:rounded-[26px] overflow-hidden bg-slate-950 border border-slate-200/90 cursor-pointer flex flex-col justify-between shrink-0 sm:shrink w-[80vw] max-w-[270px] sm:max-w-none sm:w-full snap-center transform-gpu transition-all duration-500 ease-out hover:-translate-y-2 ${shadowHoverMap[reel.id]} ${
+                  isActive
+                    ? 'scale-100 opacity-100 shadow-[0_16px_36px_rgba(13,30,50,0.18)] ring-2 ring-[#FF383D]/50 sm:ring-0'
+                    : 'scale-[0.93] sm:scale-100 opacity-75 sm:opacity-100 shadow-md sm:shadow-[0_10px_30px_rgba(13,30,50,0.08)]'
                 }`}
                 style={{
                   aspectRatio: '9 / 16',
                   maxHeight: '480px',
                 }}
               >
-                {/* Top Accent Gradient Line on Hover */}
+                {/* Top Accent Gradient Line on Hover / Active */}
                 <div
-                  className="absolute top-0 left-0 right-0 h-1 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className={`absolute top-0 left-0 right-0 h-1 z-20 transition-opacity duration-300 ${
+                    isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}
                   style={{
                     backgroundColor: reel.tagColor
                   }}
@@ -367,15 +446,31 @@ export default function ReelsSection() {
           })}
         </div>
 
+        {/* Mobile Pagination Indicator Dots */}
+        <div className="flex sm:hidden items-center justify-center gap-2 mt-4">
+          {REELS_DATA.map((reel, idx) => (
+            <button
+              key={reel.id}
+              onClick={() => scrollToIndex(idx)}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                activeReelIndex === idx
+                  ? 'w-7 bg-[#FF383D]'
+                  : 'w-2 bg-slate-300 hover:bg-slate-400'
+              }`}
+              aria-label={`Go to reel ${idx + 1}`}
+            />
+          ))}
+        </div>
+
         {/* Bottom CTA Row: Enquiry Action */}
-        <div className="mt-10 pt-7 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
-          <div className="text-xs text-slate-600 font-medium">
+        <div className="mt-8 sm:mt-10 pt-6 sm:pt-7 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+          <div className="text-xs text-slate-600 font-medium text-center sm:text-left">
             <span>Want personalized counseling on civil service or foundation tuition?</span>
           </div>
 
           <Link
             to="/enquiry"
-            className="inline-flex items-center gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-5 py-2.5 rounded-full font-heading font-bold text-xs shadow-[0_4px_16px_rgba(255,56,61,0.25)] hover:shadow-[0_6px_22px_rgba(255,56,61,0.35)] transition-all group"
+            className="inline-flex items-center justify-center gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-5 py-2.5 rounded-full font-heading font-bold text-xs shadow-[0_4px_16px_rgba(255,56,61,0.25)] hover:shadow-[0_6px_22px_rgba(255,56,61,0.35)] transition-all group w-full sm:w-auto"
           >
             <span>Talk to Academic Mentor</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
