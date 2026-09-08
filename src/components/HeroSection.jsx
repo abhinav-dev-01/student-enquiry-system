@@ -48,7 +48,7 @@ export default function HeroSection() {
             transform: `scale(${videoScale})`,
             willChange: 'transform',
           }}
-          className="w-full h-full object-cover object-center sm:object-center transform-gpu transition-transform duration-75 ease-out"
+          className="w-full h-full object-cover object-[72%_center] sm:object-center transform-gpu transition-transform duration-75 ease-out"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           <source src="/rempove_text_and_stars_make_it%20-%20Copy.mp4" type="video/mp4" />
