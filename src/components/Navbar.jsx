@@ -21,50 +21,43 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Handle header elevation shadow on scroll
+  // Unified scroll listener for header elevation & scroll-spy
   useEffect(() => {
-    const handleScroll = () => {
+    function onWindowScroll() {
+      // 1. Elevation shadow
       setScrolled(window.scrollY > 15);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+      // 2. Scroll spy if on home page
+      if (location.pathname === '/') {
+        const scrollPosition = window.scrollY + 200;
+        const whyUsEl = document.getElementById('why-us');
+        const programsEl = document.getElementById('programs');
+        const aboutEl = document.getElementById('about');
+
+        const getTop = (el) => (el ? el.getBoundingClientRect().top + window.scrollY : Infinity);
+
+        if (whyUsEl && scrollPosition >= getTop(whyUsEl)) {
+          setActiveSection('why-us');
+        } else if (programsEl && scrollPosition >= getTop(programsEl)) {
+          setActiveSection('programs');
+        } else if (aboutEl && scrollPosition >= getTop(aboutEl)) {
+          setActiveSection('about');
+        } else {
+          setActiveSection('home');
+        }
+      } else {
+        setActiveSection('');
+      }
+    }
+
+    onWindowScroll();
+    window.addEventListener('scroll', onWindowScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onWindowScroll);
+  }, [location.pathname]);
 
   // Close mobile drawer on route transition
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [location.pathname]);
-
-  // Scroll spy for Home page sections in order: Home -> About -> Programs -> Why Us
-  useEffect(() => {
-    if (location.pathname !== '/') {
-      setActiveSection('');
-      return;
-    }
-
-    const handleScrollSpy = () => {
-      const scrollPosition = window.scrollY + 200; // Offset for fixed navbar
-
-      const whyUsEl = document.getElementById('why-us');
-      const programsEl = document.getElementById('programs');
-      const aboutEl = document.getElementById('about');
-
-      const getTop = (el) => (el ? el.getBoundingClientRect().top + window.scrollY : Infinity);
-
-      if (whyUsEl && scrollPosition >= getTop(whyUsEl)) {
-        setActiveSection('why-us');
-      } else if (programsEl && scrollPosition >= getTop(programsEl)) {
-        setActiveSection('programs');
-      } else if (aboutEl && scrollPosition >= getTop(aboutEl)) {
-        setActiveSection('about');
-      } else {
-        setActiveSection('home');
-      }
-    };
-
-    handleScrollSpy();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
   const handleNavClick = (sectionKey) => {

@@ -7,7 +7,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     let ticking = false;
-    const handleScroll = () => {
+    function updateHeroScroll() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           if (window.scrollY < 1200) {
@@ -17,10 +17,10 @@ export default function HeroSection() {
         });
         ticking = true;
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', updateHeroScroll, { passive: true });
+    return () => window.removeEventListener('scroll', updateHeroScroll);
   }, []);
 
   const scrollToPrograms = () => {
