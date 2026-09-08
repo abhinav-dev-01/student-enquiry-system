@@ -70,11 +70,16 @@ export default function HeroSection() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-heading font-extrabold text-[26px] leading-[1.18] sm:text-4xl lg:text-5xl text-[#0D1E32] tracking-tight mb-5 sm:mb-6 drop-shadow-xs max-w-xl sm:max-w-none">
+          <h1 className="font-heading font-extrabold text-[26px] leading-[1.18] sm:text-4xl lg:text-5xl text-[#0D1E32] tracking-tight mb-3.5 sm:mb-4 drop-shadow-xs max-w-xl sm:max-w-none">
             Structured Guidance for{' '}
             <span className="text-[#FF383D]">Civil Services</span> &{' '}
             <span className="text-[#25ABE2]">Academic Mastery</span>.
           </h1>
+
+          {/* 2-3 Line Description */}
+          <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal mb-6 sm:mb-7 max-w-xl">
+            First-principles academic coaching built on small cohorts, daily handwritten answer evaluations, and dedicated 1-on-1 mentorship from distinguished educators.
+          </p>
 
           {/* Increased Size Action Buttons Row - Perfectly Placed & Visible on Mobile */}
           <div className="flex flex-row items-center justify-start gap-2.5 sm:gap-3.5 w-full sm:w-auto flex-wrap sm:flex-nowrap">
