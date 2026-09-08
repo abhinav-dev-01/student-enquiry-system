@@ -10,8 +10,7 @@ const CLASS_OPTIONS = [
   'Class 8',
   'Class 9',
   'Class 10',
-  'Civil Service Aspirant',
-  'Other'
+  'Civil Service Aspirant'
 ];
 
 const COURSE_OPTIONS = [
