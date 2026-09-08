@@ -70,16 +70,11 @@ export default function HeroSection() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#0D1E32] tracking-tight leading-[1.15] mb-5 md:mb-6 drop-shadow-xs">
+          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#0D1E32] tracking-tight leading-[1.15] mb-7 md:mb-10 drop-shadow-xs">
             Structured Guidance for{' '}
             <span className="text-[#FF383D]">Civil Services</span> &{' '}
             <span className="text-[#25ABE2]">Academic Mastery</span>.
           </h1>
-
-          {/* Clear, Grounded Description */}
-          <p className="text-sm sm:text-base md:text-lg text-[#334155] font-normal leading-relaxed max-w-xl lg:max-w-2xl mb-7 md:mb-10">
-            Origami Learning combines conceptual clarity with disciplined preparation. Whether preparing for competitive civil services or excelling in foundational school curriculum, our structured methodology guides students every step of the way.
-          </p>
 
           {/* Direct CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-3.5 sm:gap-4 w-full sm:w-auto">
