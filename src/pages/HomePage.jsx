@@ -23,8 +23,12 @@ export default function HomePage() {
 
   const FAQS = [
     {
-      q: 'What is the maximum batch size at Origami Learning?',
-      a: 'We strictly cap tuition batches at 15 students and civil service cohorts at small seminar sizes. Our teachers know every student by name, monitor their individual answer sheets, and ensure no one is lost in a crowded auditorium.'
+      q: 'How does Origami balance Civil Service foundation alongside regular school or college studies?',
+      a: 'Our foundation modules are thoughtfully scheduled with weekend and evening batches to complement regular academics. We cultivate NCERT conceptual grounding, analytical reading habits, and structured writing skills that strengthen school exams while building long-term competitive aptitude.'
+    },
+    {
+      q: 'How do the tuition programs support students who struggle with specific subjects?',
+      a: 'Each student receives an initial diagnostic assessment to identify exact conceptual gaps. Faculty then provide tailored chapter recovery plans, weekly 1-on-1 doubt clearing clinics, and targeted practice worksheets to transform weak areas into confident strengths.'
     },
     {
       q: 'How does the 1-on-1 daily answer evaluation work?',
@@ -33,10 +37,6 @@ export default function HomePage() {
     {
       q: 'Can a student join mid-academic term?',
       a: 'Yes. For mid-term admissions, our faculty conducts a personal diagnostic session to map any missing foundational concepts and creates a 2-week catch-up schedule before integrating into the active batch.'
-    },
-    {
-      q: 'What role do civil servants like Dr. D Sajith Babu IAS play in mentorship?',
-      a: 'Distinguished administrative officers conduct periodic masterclasses and interactive colloquiums. They teach students how to approach real governance case studies, ethical decision making, and high-pressure interview preparation.'
     }
   ];
 
