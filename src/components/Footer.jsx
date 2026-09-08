@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#071322] text-white border-t border-[#132337] relative">
+    <footer className="bg-[#071322]/80 backdrop-blur-md text-white border-t border-slate-700/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-10">
           
@@ -23,7 +23,7 @@ export default function Footer() {
               Origami Learning is an academic institute committed to concept-first learning. Guiding students with structured pedagogy in civil services and school & college curricula.
             </p>
 
-            <div className="flex items-center gap-2.5 text-xs text-slate-300 bg-[#0D1E32] px-3.5 py-2 rounded-lg border border-white/10">
+            <div className="flex items-center gap-2.5 text-xs text-slate-300 bg-white/5 px-3.5 py-2 rounded-lg border border-white/10">
               <span className="w-2 h-2 rounded-full bg-[#25ABE2]"></span>
               <span>Academic Session 2026–2027 Admissions Open</span>
             </div>
@@ -41,6 +41,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <a href="/#about" className="hover:text-white transition-colors">
+                  About Institute
+                </a>
+              </li>
+              <li>
                 <a href="/#programs" className="hover:text-white transition-colors">
                   Programs
                 </a>
@@ -48,11 +53,6 @@ export default function Footer() {
               <li>
                 <a href="/#why-us" className="hover:text-white transition-colors">
                   Why Us
-                </a>
-              </li>
-              <li>
-                <a href="/#about" className="hover:text-white transition-colors">
-                  About Institute
                 </a>
               </li>
               <li>
@@ -76,17 +76,17 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/enquiry?program=Tuition" className="hover:text-white transition-colors">
-                  Tuition (Class 8–10)
+                  School Tuition (Class 8–10)
                 </Link>
               </li>
               <li>
-                <Link to="/enquiry?program=Tuition" className="hover:text-white transition-colors">
-                  Tuition (Class 11–12)
-                </Link>
+                <a href="/#why-us" className="hover:text-white transition-colors">
+                  1-on-1 Faculty Mentorship
+                </a>
               </li>
               <li>
-                <Link to="/enquiry?program=Tuition" className="hover:text-white transition-colors">
-                  Degree Support
+                <Link to="/about" className="hover:text-white transition-colors">
+                  Academic Director's Charter
                 </Link>
               </li>
             </ul>
@@ -120,14 +120,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom divider & Copyright */}
-        <div className="pt-6 border-t border-[#132337] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© {new Date().getFullYear()} Origami Learning. All rights reserved.</p>
           
           <div className="flex items-center gap-4">
             <span>Official Student Enquiry Portal</span>
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-lg bg-[#0D1E32] hover:bg-[#1A3350] text-[#25ABE2] hover:text-white transition-colors border border-white/10"
+              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-[#25ABE2] hover:text-white transition-colors border border-white/10"
               aria-label="Scroll back to top"
             >
               <ArrowUp className="w-4 h-4" />

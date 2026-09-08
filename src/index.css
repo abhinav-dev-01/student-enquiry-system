@@ -3,6 +3,8 @@
 @theme {
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-editorial: 'Newsreader', Georgia, serif;
 
   /* Official Brand Colors from Logo */
   --color-brand-coral: #FF383D;
