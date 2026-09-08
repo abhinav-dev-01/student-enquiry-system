@@ -38,12 +38,20 @@ export default function HeroSection() {
       {/* Background Video with Mobile-Responsive Framing & Smooth Scroll-Linked Zoom-in */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
+          ref={(el) => {
+            if (el) {
+              el.muted = true;
+              el.defaultMuted = true;
+            }
+          }}
           autoPlay
           loop
           muted
           playsInline
           webkit-playsinline="true"
           preload="auto"
+          poster="/hero-bg.png"
+          disablePictureInPicture
           style={{
             transform: `scale(${videoScale})`,
             willChange: 'transform',
@@ -51,7 +59,6 @@ export default function HeroSection() {
           className="w-full h-full object-cover object-[78%_center] sm:object-center transform-gpu transition-transform duration-75 ease-out opacity-100"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
-          <source src="/rempove_text_and_stars_make_it%20-%20Copy.mp4" type="video/mp4" />
         </video>
 
         {/* Smooth Bottom Area Blend Gradient into White */}

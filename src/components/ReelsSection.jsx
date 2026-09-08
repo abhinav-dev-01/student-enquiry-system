@@ -38,10 +38,10 @@ const REELS_DATA = [
 export default function ReelsSection() {
   const [isMuted, setIsMuted] = useState(true);
   const [activeReelIndex, setActiveReelIndex] = useState(0);
-  const [playingStates, setPlayingStates] = useState({ 0: true, 1: false, 2: false });
+  const [playingStates, setPlayingStates] = useState({ 0: false, 1: false, 2: false });
+  const [bufferingStates, setBufferingStates] = useState({ 0: false, 1: false, 2: false });
+  const [loadedStates, setLoadedStates] = useState({ 0: false, 1: false, 2: false });
   const [progresses, setProgresses] = useState({ 0: 0, 1: 0, 2: 0 });
-  const [sectionInView, setSectionInView] = useState(false);
-  const [hasSwiped, setHasSwiped] = useState(false);
 
   const sectionRef = useRef(null);
   const videoRefs = useRef([]);
@@ -49,16 +49,39 @@ export default function ReelsSection() {
   const containerRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
 
-  // IntersectionObserver for Section Entrance and Autoplay Trigger
+  // Safe video playback function with iOS Safari / Chrome autoplay fallback
+  const playVideoSafely = (vid, idx) => {
+    if (!vid) return;
+    vid.muted = isMuted;
+    vid.defaultMuted = true;
+    const playPromise = vid.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setPlayingStates(prev => ({ ...prev, [idx]: true }));
+        })
+        .catch(() => {
+          // If browser restricts unmuted autoplay, immediately fall back to muted play
+          vid.muted = true;
+          vid.play()
+            .then(() => {
+              setPlayingStates(prev => ({ ...prev, [idx]: true }));
+            })
+            .catch(() => {
+              setPlayingStates(prev => ({ ...prev, [idx]: false }));
+            });
+        });
+    }
+  };
+
+  // IntersectionObserver for Section Entrance and Instant Autoplay Trigger
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setSectionInView(true);
           const activeVid = videoRefs.current[activeReelIndex];
           if (activeVid) {
-            activeVid.play().catch(() => {});
-            setPlayingStates(prev => ({ ...prev, [activeReelIndex]: true }));
+            playVideoSafely(activeVid, activeReelIndex);
           }
         } else {
           videoRefs.current.forEach(v => {
@@ -69,7 +92,7 @@ export default function ReelsSection() {
           setPlayingStates({ 0: false, 1: false, 2: false });
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     if (sectionRef.current) {
@@ -77,21 +100,22 @@ export default function ReelsSection() {
     }
 
     return () => observer.disconnect();
-  }, [activeReelIndex]);
+  }, [activeReelIndex, isMuted]);
 
   // Handle global unmute / mute toggle
   const toggleSound = () => {
     const nextMuted = !isMuted;
     setIsMuted(nextMuted);
     videoRefs.current.forEach(v => {
-      if (v) v.muted = nextMuted;
+      if (v) {
+        v.muted = nextMuted;
+      }
     });
 
     const activeVid = videoRefs.current[activeReelIndex];
     if (activeVid) {
       activeVid.muted = nextMuted;
-      activeVid.play().catch(() => {});
-      setPlayingStates(prev => ({ ...prev, [activeReelIndex]: true }));
+      playVideoSafely(activeVid, activeReelIndex);
     }
   };
 
@@ -108,11 +132,8 @@ export default function ReelsSection() {
         }
       });
 
-      vid.muted = isMuted;
-      vid.play().then(() => {
-        setActiveReelIndex(idx);
-        setPlayingStates(prev => ({ ...prev, [idx]: true }));
-      }).catch(() => {});
+      setActiveReelIndex(idx);
+      playVideoSafely(vid, idx);
     } else {
       vid.pause();
       setPlayingStates(prev => ({ ...prev, [idx]: false }));
@@ -132,7 +153,6 @@ export default function ReelsSection() {
   const scrollToIndex = (idx) => {
     if (idx < 0 || idx >= REELS_DATA.length) return;
     setActiveReelIndex(idx);
-    setHasSwiped(true);
 
     const cardEl = cardRefs.current[idx];
     const container = containerRef.current;
@@ -152,9 +172,7 @@ export default function ReelsSection() {
     videoRefs.current.forEach((otherVid, i) => {
       if (otherVid) {
         if (i === idx) {
-          otherVid.muted = isMuted;
-          otherVid.play().catch(() => {});
-          setPlayingStates(prev => ({ ...prev, [i]: true }));
+          playVideoSafely(otherVid, i);
         } else {
           otherVid.pause();
           setPlayingStates(prev => ({ ...prev, [i]: false }));
@@ -166,7 +184,6 @@ export default function ReelsSection() {
   // Mobile horizontal swipe detection: smoothly auto-tracks centered reel
   const handleContainerScroll = () => {
     if (!containerRef.current) return;
-    setHasSwiped(true);
 
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
@@ -197,9 +214,7 @@ export default function ReelsSection() {
         videoRefs.current.forEach((v, i) => {
           if (v) {
             if (i === closestIdx) {
-              v.muted = isMuted;
-              v.play().catch(() => {});
-              setPlayingStates(prev => ({ ...prev, [i]: true }));
+              playVideoSafely(v, i);
             } else {
               v.pause();
               setPlayingStates(prev => ({ ...prev, [i]: false }));
@@ -307,8 +322,6 @@ export default function ReelsSection() {
         </div>
 
         {/* REELS CAROUSEL / SLIDER CONTAINER */}
-        {/* On Mobile: Smooth Horizontal Slide with Snap Centering & 3D Depth Scale */}
-        {/* On Desktop: Centered 3-Card Grid with Rich Themed Hover Effects */}
         <div
           ref={containerRef}
           onScroll={handleContainerScroll}
@@ -316,10 +329,13 @@ export default function ReelsSection() {
         >
           {REELS_DATA.map((reel, idx) => {
             const isPlaying = !!playingStates[idx];
+            const isBuffering = !!bufferingStates[idx];
+            const isLoaded = !!loadedStates[idx];
             const progress = progresses[idx] || 0;
             const isActive = activeReelIndex === idx;
+            // Preload actively viewed reel and next queued reel for instant switching
+            const shouldPreloadAuto = isActive || idx === (activeReelIndex + 1) % REELS_DATA.length;
 
-            // Tailored glow styles on hover
             const shadowHoverMap = {
               1: 'hover:shadow-[0_20px_40px_-10px_rgba(255,56,61,0.3)] hover:border-[#FF383D]/60',
               2: 'hover:shadow-[0_20px_40px_-10px_rgba(37,171,226,0.3)] hover:border-[#25ABE2]/60',
@@ -341,6 +357,16 @@ export default function ReelsSection() {
                   maxHeight: '480px',
                 }}
               >
+                {/* Fallback ambient background gradient while video stream initialises */}
+                {!isLoaded && (
+                  <div
+                    className="absolute inset-0 z-0 transition-opacity duration-700 pointer-events-none"
+                    style={{
+                      background: `radial-gradient(circle at 50% 35%, ${reel.tagColor}25 0%, #060e1a 100%)`
+                    }}
+                  />
+                )}
+
                 {/* Top Accent Gradient Line on Hover / Active */}
                 <div
                   className={`absolute top-0 left-0 right-0 h-1 z-20 transition-opacity duration-300 ${
@@ -351,15 +377,31 @@ export default function ReelsSection() {
                   }}
                 />
 
-                {/* Background Video with Smooth Scale Hover */}
+                {/* High Performance Video with Dynamic Preloading & PlaysInline */}
                 <video
-                  ref={el => (videoRefs.current[idx] = el)}
+                  ref={el => {
+                    videoRefs.current[idx] = el;
+                    if (el) {
+                      el.defaultMuted = true;
+                    }
+                  }}
                   src={reel.src}
                   loop
                   playsInline
-                  muted={isMuted}
                   webkit-playsinline="true"
-                  preload="metadata"
+                  disablePictureInPicture
+                  muted={isMuted}
+                  preload={shouldPreloadAuto ? 'auto' : 'metadata'}
+                  onWaiting={() => setBufferingStates(prev => ({ ...prev, [idx]: true }))}
+                  onPlaying={() => {
+                    setBufferingStates(prev => ({ ...prev, [idx]: false }));
+                    setLoadedStates(prev => ({ ...prev, [idx]: true }));
+                  }}
+                  onCanPlay={() => {
+                    setBufferingStates(prev => ({ ...prev, [idx]: false }));
+                    setLoadedStates(prev => ({ ...prev, [idx]: true }));
+                  }}
+                  onLoadedData={() => setLoadedStates(prev => ({ ...prev, [idx]: true }))}
                   onTimeUpdate={() => handleTimeUpdate(idx)}
                   className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-700 ease-out group-hover:scale-108"
                 />
@@ -396,21 +438,27 @@ export default function ReelsSection() {
                   </button>
                 </div>
 
-                {/* CENTER: Tap Play / Pause Overlay Icon */}
+                {/* CENTER: Tap Play / Pause Overlay Icon + Buffering Spinner */}
                 <div className="relative z-10 flex items-center justify-center my-auto pointer-events-none">
-                  <div
-                    className={`w-12 h-12 rounded-full bg-black/55 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl transition-all duration-300 ${
-                      isPlaying
-                        ? 'opacity-0 scale-75 group-hover:opacity-80 group-hover:scale-100'
-                        : 'opacity-90 scale-100 group-hover:scale-110'
-                    }`}
-                  >
-                    {isPlaying ? (
-                      <Pause className="w-5 h-5 fill-current" />
-                    ) : (
-                      <Play className="w-5 h-5 fill-current translate-x-0.5" />
-                    )}
-                  </div>
+                  {isBuffering ? (
+                    <div className="w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/30 flex items-center justify-center shadow-xl">
+                      <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-[#FF383D] animate-spin" />
+                    </div>
+                  ) : (
+                    <div
+                      className={`w-12 h-12 rounded-full bg-black/55 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl transition-all duration-300 ${
+                        isPlaying
+                          ? 'opacity-0 scale-75 group-hover:opacity-80 group-hover:scale-100'
+                          : 'opacity-90 scale-100 group-hover:scale-110'
+                      }`}
+                    >
+                      {isPlaying ? (
+                        <Pause className="w-5 h-5 fill-current" />
+                      ) : (
+                        <Play className="w-5 h-5 fill-current translate-x-0.5" />
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* BOTTOM: Malayalam Title, Subtitle, Progress Bar */}
