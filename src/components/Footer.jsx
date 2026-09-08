@@ -84,11 +84,6 @@ export default function Footer() {
                   1-on-1 Faculty Mentorship
                 </a>
               </li>
-              <li>
-                <Link to="/about" className="hover:text-white transition-colors">
-                  Academic Director's Charter
-                </Link>
-              </li>
             </ul>
           </div>
 
