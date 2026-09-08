@@ -1,9 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen } from 'lucide-react';
 
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
+  const videoRef = useRef(null);
+
+  // Robust background video autoplay across all browsers (including iOS Safari & Chrome)
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const attemptPlay = () => {
+      if (video) {
+        video.muted = true;
+        const promise = video.play();
+        if (promise !== undefined) {
+          promise.catch(() => {
+            // Autoplay policy prevented immediate playback; wait for first user gesture
+            const playOnGesture = () => {
+              if (video) {
+                video.muted = true;
+                video.play().catch(() => {});
+              }
+              window.removeEventListener('touchstart', playOnGesture);
+              window.removeEventListener('scroll', playOnGesture);
+              window.removeEventListener('click', playOnGesture);
+              window.removeEventListener('mousemove', playOnGesture);
+            };
+
+            window.addEventListener('touchstart', playOnGesture, { passive: true, once: true });
+            window.addEventListener('scroll', playOnGesture, { passive: true, once: true });
+            window.addEventListener('click', playOnGesture, { passive: true, once: true });
+            window.addEventListener('mousemove', playOnGesture, { passive: true, once: true });
+          });
+        }
+      }
+    };
+
+    attemptPlay();
+
+    // Re-attempt on ready events
+    video.addEventListener('canplay', attemptPlay);
+    video.addEventListener('loadeddata', attemptPlay);
+
+    return () => {
+      video.removeEventListener('canplay', attemptPlay);
+      video.removeEventListener('loadeddata', attemptPlay);
+    };
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -38,12 +87,7 @@ export default function HeroSection() {
       {/* Background Video with Mobile-Responsive Framing & Smooth Scroll-Linked Zoom-in */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
-          ref={(el) => {
-            if (el) {
-              el.muted = true;
-              el.defaultMuted = true;
-            }
-          }}
+          ref={videoRef}
           autoPlay
           loop
           muted
