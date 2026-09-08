@@ -15,8 +15,8 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <Link to="/" className="mb-4 inline-flex items-center">
-              <Logo className="h-8 sm:h-9" />
+            <Link to="/" className="mb-5 inline-flex items-center">
+              <Logo className="h-11 sm:h-12 md:h-14" />
             </Link>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-5">
