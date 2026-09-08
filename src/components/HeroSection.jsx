@@ -36,7 +36,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-start pt-20 pb-12 sm:pt-24 sm:pb-14 md:pt-32 md:pb-16 bg-white overflow-hidden">
       {/* Background Video with Mobile-Responsive Framing & Smooth Scroll-Linked Zoom-in */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-slate-950">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
           autoPlay
           loop
@@ -48,23 +48,19 @@ export default function HeroSection() {
             transform: `scale(${videoScale})`,
             willChange: 'transform',
           }}
-          className="w-full h-full object-cover object-[78%_center] sm:object-center transform-gpu transition-transform duration-75 ease-out opacity-65"
+          className="w-full h-full object-cover object-[78%_center] sm:object-center transform-gpu transition-transform duration-75 ease-out opacity-100"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           <source src="/rempove_text_and_stars_make_it%20-%20Copy.mp4" type="video/mp4" />
         </video>
 
-        {/* Darkness & Contrast Overlay */}
-        <div className="absolute inset-0 bg-slate-950/30 backdrop-brightness-90"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/20"></div>
-
         {/* Smooth Bottom Area Blend Gradient into White */}
-        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-36 md:h-48 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-36 md:h-48 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-2xl lg:max-w-3xl flex flex-col items-start text-left">
-          
+
           {/* Admissions Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs font-heading font-bold text-[#0D1E32] mb-3 sm:mb-4">
             <span className="w-2 h-2 rounded-full bg-[#FF383D]"></span>
