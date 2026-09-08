@@ -154,46 +154,46 @@ export default function ReelsSection() {
     <section
       id="reels"
       ref={sectionRef}
-      className="py-20 md:py-28 bg-[#091524] text-white relative overflow-hidden border-b border-slate-800 scroll-mt-20"
+      className="py-16 md:py-24 bg-white text-[#0D1E32] relative overflow-hidden border-b border-slate-200/80 scroll-mt-20"
     >
-      {/* Ambient Lighting Gradients */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#FF383D]/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#25ABE2]/10 rounded-full blur-[120px] pointer-events-none translate-y-1/2" />
-      <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px] opacity-30 pointer-events-none" />
+      {/* Subtle Ambient Background Glows */}
+      <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-red-100/35 rounded-full blur-[100px] pointer-events-none -translate-y-1/2" />
+      <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-sky-100/35 rounded-full blur-[100px] pointer-events-none translate-y-1/2" />
+      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:28px_28px] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header with Title & Interactive Unmute / Sound Pill */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 text-left">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-xs mb-3.5">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-10 sm:mb-14 text-left">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100/80 shadow-xs mb-3">
               <Sparkles className="w-3.5 h-3.5 text-[#FF383D]" />
               <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#FF383D] uppercase">
                 STUDENT VOICES & PERSPECTIVES
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-[#0D1E32] tracking-tight leading-[1.18]">
               Real Stories. Authentic Aspirations.
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base mt-2.5 leading-relaxed max-w-xl">
+            <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
               Watch firsthand guidance, early civil service motivation, and student reflections directly from the Origami Learning community.
             </p>
           </div>
 
           {/* Interactive Sound Controller Pill with Pulse Animation */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 shrink-0">
             <button
               onClick={toggleSound}
-              className={`inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full text-xs font-heading font-bold transition-all duration-300 cursor-pointer shadow-lg ${
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-heading font-bold transition-all duration-300 cursor-pointer shadow-xs ${
                 isMuted
-                  ? 'bg-white/10 hover:bg-white/15 text-white border border-white/20'
-                  : 'bg-[#FF383D] hover:bg-[#E0262B] text-white shadow-[0_4px_20px_rgba(255,56,61,0.4)]'
+                  ? 'bg-white hover:bg-slate-50 text-slate-800 border border-slate-200/90 hover:border-slate-300'
+                  : 'bg-[#FF383D] hover:bg-[#E0262B] text-white shadow-[0_4px_16px_rgba(255,56,61,0.35)]'
               }`}
               title={isMuted ? "Click to Unmute Audio" : "Click to Mute Audio"}
             >
               {isMuted ? (
                 <>
-                  <VolumeX className="w-4 h-4 text-slate-300" />
+                  <VolumeX className="w-3.5 h-3.5 text-slate-400" />
                   <span>Tap to Unmute Audio</span>
                   <span className="flex h-2 w-2 relative">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF383D] opacity-75"></span>
@@ -202,7 +202,7 @@ export default function ReelsSection() {
                 </>
               ) : (
                 <>
-                  <Volume2 className="w-4 h-4 text-white" />
+                  <Volume2 className="w-3.5 h-3.5 text-white" />
                   <span>Audio Enabled</span>
                   <span className="flex items-center gap-0.5 h-3">
                     <span className="w-0.5 h-2 bg-white animate-pulse" />
@@ -214,11 +214,11 @@ export default function ReelsSection() {
             </button>
 
             {/* Carousel Navigation Arrows for Small/Medium Screens */}
-            <div className="hidden sm:flex items-center gap-1.5">
+            <div className="hidden sm:flex items-center gap-1">
               <button
                 onClick={() => scrollToIndex(activeReelIndex - 1)}
                 disabled={activeReelIndex === 0}
-                className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed border border-white/10 text-white transition-colors cursor-pointer"
+                className="p-2 rounded-full bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed border border-slate-200 text-slate-700 transition-colors cursor-pointer shadow-xs"
                 aria-label="Previous Reel"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -226,7 +226,7 @@ export default function ReelsSection() {
               <button
                 onClick={() => scrollToIndex(activeReelIndex + 1)}
                 disabled={activeReelIndex === REELS_DATA.length - 1}
-                className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed border border-white/10 text-white transition-colors cursor-pointer"
+                className="p-2 rounded-full bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed border border-slate-200 text-slate-700 transition-colors cursor-pointer shadow-xs"
                 aria-label="Next Reel"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -235,31 +235,44 @@ export default function ReelsSection() {
           </div>
         </div>
 
-        {/* 3 Premium Reel Phone Cards Grid / Slider */}
+        {/* 3 Reduced-Size Premium Reel Phone Cards Grid with Sleek Hover Effects */}
         <div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6 items-stretch justify-center max-w-4xl mx-auto"
         >
           {REELS_DATA.map((reel, idx) => {
             const isPlaying = !!playingStates[idx];
             const progress = progresses[idx] || 0;
             const isActive = activeReelIndex === idx;
 
+            // Tailored glow styles on hover
+            const shadowHoverMap = {
+              1: 'hover:shadow-[0_20px_40px_-10px_rgba(255,56,61,0.3)] hover:border-[#FF383D]/60',
+              2: 'hover:shadow-[0_20px_40px_-10px_rgba(37,171,226,0.3)] hover:border-[#25ABE2]/60',
+              3: 'hover:shadow-[0_20px_40px_-10px_rgba(22,163,74,0.3)] hover:border-[#16A34A]/60'
+            };
+
             return (
               <div
                 key={reel.id}
                 onClick={() => togglePlayPause(idx)}
-                className={`group relative rounded-[28px] sm:rounded-[32px] overflow-hidden bg-[#0F2137] border transition-all duration-500 cursor-pointer flex flex-col justify-between shadow-[0_16px_40px_rgba(0,0,0,0.4)] ${
-                  isActive
-                    ? 'border-white/40 ring-2 ring-white/15 scale-[1.01] -translate-y-1'
-                    : 'border-white/10 hover:border-white/25 hover:-translate-y-1'
+                className={`group relative rounded-[24px] sm:rounded-[26px] overflow-hidden bg-slate-950 border border-slate-200/90 transition-all duration-500 cursor-pointer flex flex-col justify-between shadow-[0_10px_30px_rgba(13,30,50,0.08)] hover:-translate-y-2 ${shadowHoverMap[reel.id]} ${
+                  isActive ? 'ring-2 ring-[#FF383D]/40' : ''
                 }`}
                 style={{
                   aspectRatio: '9 / 16',
-                  maxHeight: '620px',
+                  maxHeight: '480px',
                 }}
               >
-                {/* Background Video */}
+                {/* Top Accent Gradient Line on Hover */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-1 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    backgroundColor: reel.tagColor
+                  }}
+                />
+
+                {/* Background Video with Smooth Scale Hover */}
                 <video
                   ref={el => (videoRefs.current[idx] = el)}
                   src={reel.src}
@@ -269,28 +282,20 @@ export default function ReelsSection() {
                   webkit-playsinline="true"
                   preload="metadata"
                   onTimeUpdate={() => handleTimeUpdate(idx)}
-                  className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transform-gpu transition-transform duration-700 ease-out group-hover:scale-108"
                 />
 
                 {/* Ambient Cinematic Vignette Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 pointer-events-none" />
-                
-                {/* Subtle Brand Border Glow on Hover */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[32px]"
-                  style={{
-                    boxShadow: `inset 0 0 24px ${reel.tagColor}40`
-                  }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/85 pointer-events-none transition-opacity duration-300 group-hover:opacity-90" />
 
                 {/* TOP BAR: Tag & Sound Indicator */}
-                <div className="relative z-10 p-5 sm:p-6 flex items-center justify-between w-full">
+                <div className="relative z-10 p-4 flex items-center justify-between w-full">
                   <span
-                    className="text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border backdrop-blur-md shadow-xs"
+                    className="text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border backdrop-blur-md shadow-xs transition-transform duration-300 group-hover:scale-105"
                     style={{
-                      backgroundColor: `${reel.tagColor}25`,
+                      backgroundColor: `${reel.tagColor}35`,
                       color: '#FFFFFF',
-                      borderColor: `${reel.tagColor}60`
+                      borderColor: `${reel.tagColor}80`
                     }}
                   >
                     {reel.tag}
@@ -301,7 +306,7 @@ export default function ReelsSection() {
                       e.stopPropagation();
                       toggleSound();
                     }}
-                    className="p-2 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white transition-transform active:scale-90 cursor-pointer"
+                    className="p-1.5 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white transition-all active:scale-90 cursor-pointer group-hover:border-white/40"
                     aria-label={isMuted ? "Unmute" : "Mute"}
                   >
                     {isMuted ? (
@@ -315,40 +320,43 @@ export default function ReelsSection() {
                 {/* CENTER: Tap Play / Pause Overlay Icon */}
                 <div className="relative z-10 flex items-center justify-center my-auto pointer-events-none">
                   <div
-                    className={`w-14 h-14 rounded-full bg-black/50 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl transition-all duration-300 ${
+                    className={`w-12 h-12 rounded-full bg-black/55 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl transition-all duration-300 ${
                       isPlaying
-                        ? 'opacity-0 scale-75 group-hover:opacity-60 group-hover:scale-100'
-                        : 'opacity-90 scale-100'
+                        ? 'opacity-0 scale-75 group-hover:opacity-80 group-hover:scale-100'
+                        : 'opacity-90 scale-100 group-hover:scale-110'
                     }`}
                   >
                     {isPlaying ? (
-                      <Pause className="w-6 h-6 fill-current" />
+                      <Pause className="w-5 h-5 fill-current" />
                     ) : (
-                      <Play className="w-6 h-6 fill-current translate-x-0.5" />
+                      <Play className="w-5 h-5 fill-current translate-x-0.5" />
                     )}
                   </div>
                 </div>
 
-                {/* BOTTOM: Malayalam Title, Subtitle, Progress Bar & Enquiry Link */}
-                <div className="relative z-10 p-5 sm:p-6 text-left space-y-2.5">
-                  <span className="text-[11px] font-mono font-medium text-slate-300 block">
+                {/* BOTTOM: Malayalam Title, Subtitle, Progress Bar */}
+                <div className="relative z-10 p-4 text-left space-y-1.5 transition-transform duration-300 group-hover:translate-y-[-2px]">
+                  <span className="text-[10px] font-mono font-medium text-slate-300 block">
                     {reel.speaker}
                   </span>
 
-                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-white leading-snug line-clamp-2 drop-shadow-sm">
+                  <h3 className="font-heading font-extrabold text-sm sm:text-[15px] text-white leading-snug line-clamp-2 drop-shadow-sm">
                     {reel.title}
                   </h3>
 
-                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-2 font-normal font-sans drop-shadow-xs">
+                  <p className="text-[11px] text-slate-300 leading-tight line-clamp-2 font-normal font-sans drop-shadow-xs">
                     {reel.subtitle}
                   </p>
 
                   {/* Playback Progress Line */}
-                  <div className="pt-2">
+                  <div className="pt-1.5">
                     <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-[#FF383D] to-[#25ABE2] transition-all duration-150"
-                        style={{ width: `${progress}%` }}
+                        className="h-full transition-all duration-150"
+                        style={{ 
+                          width: `${progress}%`,
+                          backgroundColor: reel.tagColor
+                        }}
                       />
                     </div>
                   </div>
@@ -360,14 +368,14 @@ export default function ReelsSection() {
         </div>
 
         {/* Bottom CTA Row: Enquiry Action */}
-        <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
-          <div className="text-xs text-slate-400">
+        <div className="mt-10 pt-7 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+          <div className="text-xs text-slate-600 font-medium">
             <span>Want personalized counseling on civil service or foundation tuition?</span>
           </div>
 
           <Link
             to="/enquiry"
-            className="inline-flex items-center gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-6 py-3 rounded-full font-heading font-bold text-xs shadow-[0_4px_16px_rgba(255,56,61,0.3)] hover:shadow-[0_6px_22px_rgba(255,56,61,0.45)] transition-all group"
+            className="inline-flex items-center gap-2 bg-[#FF383D] hover:bg-[#E0262B] text-white px-5 py-2.5 rounded-full font-heading font-bold text-xs shadow-[0_4px_16px_rgba(255,56,61,0.25)] hover:shadow-[0_6px_22px_rgba(255,56,61,0.35)] transition-all group"
           >
             <span>Talk to Academic Mentor</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
