@@ -6,12 +6,12 @@ import CTASection from '../components/CTASection';
 import { 
   ArrowRight, 
   ChevronDown, 
-  PenTool, 
+  Award, 
   Clock, 
   Calendar, 
   Users, 
   Check, 
-  Compass,
+  Compass, 
   ArrowUpRight
 } from 'lucide-react';
 
@@ -352,7 +352,7 @@ export default function HomePage() {
             {/* 3 Main Point Cards with Modern Glass/Gradient Theme & Dynamic Hover Effects */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 text-left">
               
-              {/* Card 1: Handwritten Feedback (Red Theme) */}
+              {/* Card 1: Leadership Curriculum (Red Theme) */}
               <div className="group relative bg-white/95 backdrop-blur-md rounded-3xl p-8 sm:p-9 border border-slate-200/90 shadow-[0_4px_20px_rgba(13,30,50,0.04)] hover:shadow-[0_24px_48px_-12px_rgba(255,56,61,0.22)] hover:border-[#FF383D]/40 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
                 {/* Modern Gradient Accent Line on Top */}
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#FF383D] via-orange-400 to-[#FF383D] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -362,7 +362,7 @@ export default function HomePage() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-50 text-[#FF383D] flex items-center justify-center group-hover:bg-[#FF383D] group-hover:text-white transition-all duration-300 shadow-xs group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(255,56,61,0.3)]">
-                      <PenTool className="w-6 h-6 transition-transform group-hover:rotate-6" />
+                      <Award className="w-6 h-6 transition-transform group-hover:rotate-6" />
                     </div>
                     <span className="text-xs font-mono font-extrabold text-[#FF383D] bg-red-50/80 px-3 py-1 rounded-full border border-red-100/80">
                       01
@@ -370,11 +370,11 @@ export default function HomePage() {
                   </div>
 
                   <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-[#0D1E32] mb-3 group-hover:text-[#FF383D] transition-colors leading-snug">
-                    Handwritten Faculty Feedback
+                    Leadership Curriculum
                   </h3>
 
                   <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-sans">
-                    Students write answers on real paper every day. Faculty provide line-by-line red-ink critiques returned within 24 hours to build structural articulation.
+                    Cultivating critical thinking, administrative ethics, and strategic clarity through real-world governance case studies, policy debates, and executive leadership workshops.
                   </p>
                 </div>
 
@@ -382,7 +382,7 @@ export default function HomePage() {
                   <span className="flex h-5 w-5 rounded-full bg-emerald-100 text-[#16A34A] items-center justify-center">
                     <Check className="w-3 h-3 stroke-[3]" />
                   </span>
-                  <span className="text-xs font-heading font-bold text-slate-700 tracking-tight">Returned within 24 hours</span>
+                  <span className="text-xs font-heading font-bold text-slate-700 tracking-tight">Governance & Ethics Modules</span>
                 </div>
               </div>
 
