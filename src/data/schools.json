@@ -1,0 +1,74 @@
+[
+  {
+    "id": "11002",
+    "schoolCode": "11002",
+    "schoolName": "G. H. S. S. Kasaragod",
+    "district": "Kasaragod",
+    "board": "Kerala State",
+    "category": "Government",
+    "level": "5-12",
+    "classes": [5, 6, 7, 8, 9, 10, 11, 12],
+    "source": "KITE Sametham",
+    "active": true
+  },
+  {
+    "id": "11001",
+    "schoolCode": "11001",
+    "schoolName": "S. A. T. H. S. Manjeshwar",
+    "district": "Kasaragod",
+    "board": "Kerala State",
+    "category": "Aided",
+    "level": "8-10",
+    "classes": [8, 9, 10],
+    "source": "KITE Sametham",
+    "active": true
+  },
+  {
+    "id": "12001",
+    "schoolCode": "12001",
+    "schoolName": "G. H. S. S. Cherkala",
+    "district": "Kasaragod",
+    "board": "Kerala State",
+    "category": "Government",
+    "level": "9-12",
+    "classes": [9, 10, 11, 12],
+    "source": "KITE Sametham",
+    "active": true
+  },
+  {
+    "id": "CBSE-KV-KSD",
+    "schoolCode": "90001",
+    "schoolName": "Kendriya Vidyalaya No. 1, Kasaragod",
+    "district": "Kasaragod",
+    "board": "CBSE",
+    "category": "Kendriya Vidyalaya",
+    "level": "1-12",
+    "classes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "source": "CBSE SARAS",
+    "active": true
+  },
+  {
+    "id": "13001",
+    "schoolCode": "13001",
+    "schoolName": "Government Model Boys H.S.S. Thycaud",
+    "district": "Thiruvananthapuram",
+    "board": "Kerala State",
+    "category": "Government",
+    "level": "1-12",
+    "classes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "source": "KITE Sametham",
+    "active": true
+  },
+  {
+    "id": "CBSE-IND-KSD",
+    "schoolCode": "93001",
+    "schoolName": "Chinmaya Vidyalaya, Kasaragod",
+    "district": "Kasaragod",
+    "board": "CBSE",
+    "category": "CBSE Independent",
+    "level": "1-12",
+    "classes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "source": "CBSE SARAS",
+    "active": true
+  }
+]

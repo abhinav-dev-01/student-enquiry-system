@@ -119,7 +119,7 @@ export default function EnquiryForm() {
     const validation = validateEnquiry(formData);
     if (!validation.isValid) {
       setErrors(validation.errors);
-      
+
       // Focus first error field for accessibility
       const firstErrorKey = Object.keys(validation.errors)[0];
       const el = document.getElementById(firstErrorKey);
@@ -131,7 +131,7 @@ export default function EnquiryForm() {
 
     try {
       const response = await submitStudentEnquiry(formData);
-      
+
       if (response.success) {
         // Clear the form fields upon successful submission
         setFormData(INITIAL_FORM_STATE);
@@ -159,7 +159,7 @@ export default function EnquiryForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      
+
       {/* Global Server Error Banner */}
       {serverError && (
         <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3 animate-in fade-in">
@@ -172,7 +172,7 @@ export default function EnquiryForm() {
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        
+
         {/* 1. Student Name */}
         <div className="sm:col-span-2">
           <FormInput
