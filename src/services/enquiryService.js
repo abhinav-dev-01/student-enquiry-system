@@ -5,7 +5,6 @@
  */
 
 import { GOOGLE_APPS_SCRIPT_URL } from '../config/apiConfig';
-import schoolsData from '../data/schools.json';
 
 export function validateEnquiry(formData) {
   const errors = {};
@@ -18,44 +17,12 @@ export function validateEnquiry(formData) {
     errors.place = 'Please enter your city / town / place';
   }
 
-  // School Selection Validations
-  if (!formData.district || formData.district === 'All') {
-    errors.district = 'District is required';
+  if (!formData.class) {
+    errors.class = 'Please select your current class / grade';
   }
 
-  if (!formData.board || formData.board === 'All') {
-    errors.board = 'Board is required';
-  }
-
-  if (!formData.classLevel || !['8', '9', '10'].includes(formData.classLevel)) {
-    errors.classLevel = 'Class must be 8, 9 or 10';
-  }
-
-  if (!formData.schoolId) {
-    errors.schoolId = 'School is required';
-  } else {
-    // Verify that the selected school genuinely matches the filters
-    const selectedSchool = schoolsData.find(s => s.id === formData.schoolId);
-    
-    if (!selectedSchool) {
-      errors.schoolId = 'Invalid school selected';
-    } else {
-      if (formData.district && formData.district !== 'All' && selectedSchool.district !== formData.district) {
-        errors.schoolId = 'Selected school does not belong to the selected district';
-      }
-      if (formData.board && formData.board !== 'All' && selectedSchool.board !== formData.board) {
-        errors.schoolId = 'Selected school does not belong to the selected board';
-      }
-      if (formData.category && formData.category !== 'All' && selectedSchool.category !== formData.category) {
-        errors.schoolId = 'Selected school does not belong to the selected category';
-      }
-      if (formData.classLevel && formData.classLevel !== 'All') {
-        const classNum = parseInt(formData.classLevel, 10);
-        if (!selectedSchool.classes.includes(classNum)) {
-          errors.schoolId = 'Selected school does not offer the selected class';
-        }
-      }
-    }
+  if (!formData.school || formData.school.trim().length === 0) {
+    errors.school = 'Please enter your school or college name';
   }
 
   const mobileRegex = /^[6-9][0-9]{9}$/;
@@ -89,39 +56,34 @@ export async function submitStudentEnquiry(formData) {
   const pad = (n) => String(n).padStart(2, '0');
   const formattedTimestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
-  const selectedSchool = schoolsData.find(s => s.id === formData.schoolId);
-  const schoolRecord = selectedSchool 
-    ? `${selectedSchool.schoolName} (Code: ${selectedSchool.schoolCode})`
-    : formData.schoolId;
-
   // Send EXACT fields requested by the new Google Apps Script.
-  // The new Apps script automatically generates the Sl No., so we don't send it.
   const payload = {
+    action: "create",
     name: formData.name.trim(),
     place: formData.place.trim(),
-    class: formData.classLevel,
-    school: schoolRecord,
+    class: formData.class.trim(),
+    school: formData.school.trim(),
     mobile: formData.mobile.trim(),
-    course: formData.course.trim(),
-    action: "create"
+    course: formData.course.trim()
   };
 
   try {
+    console.log("ACTUAL POST URL:", GOOGLE_APPS_SCRIPT_URL);
+    console.log("Submitting payload:", payload);
+
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     
     const fetchOptions = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'text/plain;charset=utf-8'
+        "Content-Type": "text/plain;charset=utf-8"
       },
-      body: JSON.stringify(payload),
-      redirect: 'follow'
+      body: JSON.stringify(payload)
     };
 
-    // Google Apps Script CORS often fails on localhost due to strict browser origin policies.
-    // We use 'no-cors' mode locally to force the opaque POST request through.
     if (isLocalhost) {
       fetchOptions.mode = 'no-cors';
+      console.warn("Running on localhost: using mode 'no-cors' to bypass strict Google Apps Script CORS restrictions.");
     }
 
     const response = await fetch(GOOGLE_APPS_SCRIPT_URL, fetchOptions);
@@ -129,22 +91,15 @@ export async function submitStudentEnquiry(formData) {
     let result = null;
 
     if (isLocalhost) {
-      // In 'no-cors' mode, the response is opaque (status 0) and body cannot be read.
-      // If fetch didn't throw a network error, the payload was successfully sent.
+      // In no-cors mode, the response is opaque (status 0). We cannot read response.json().
+      // If fetch didn't throw a network error, it successfully reached Google servers.
+      console.log("Localhost opaque response status:", response.status);
       result = { success: true };
     } else {
-      if (!response.ok) {
-        throw new Error(`Server returned error status (${response.status}). Please try again.`);
-      }
-
-      const responseText = await response.text();
-
-      try {
-        result = JSON.parse(responseText);
-      } catch {
-        result = { success: true };
-      }
-
+      console.log("Response status:", response.status);
+      result = await response.json();
+      console.log("Apps Script response:", result);
+      
       if (result && result.success === false) {
         throw new Error(result.message || 'Submission was not accepted by the server. Please try again.');
       }
@@ -175,7 +130,7 @@ export async function submitStudentEnquiry(formData) {
     };
 
   } catch (error) {
-    console.error('Google Sheets submission error:', error);
+    console.error("ENQUIRY SUBMISSION ERROR:", error);
     if (error.type === 'VALIDATION_ERROR') {
       throw error;
     }
